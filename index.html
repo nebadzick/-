@@ -1,4 +1,3 @@
-
 <html lang="ru"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
@@ -1296,29 +1295,22 @@
        window.showMaterials = function(courseName) {
     // Ссылки для разных файлов - КАЖДОМУ ФАЙЛУ СВОЯ УНИКАЛЬНАЯ ССЫЛКА
     const fileUrls = {
-        // Для Информатики
-        "Шпаргалка.pdf": "https://disk.yandex.ru/i/J5xQ6EfI34WzUA",
-        "Алгоритмы.pdf": "https://disk.yandex.ru/i/EwxSO0hef4c5fA",
-        
-        // Для Математики
-        "Формулы для ОГЭ.pdf": "https://disk.yandex.ru/i/5HeprCC505G5Hw",
-        "Тренировочные тесты.pdf": "https://disk.yandex.ru/i/ZQQ9mb2RNrENCQ",
-        
-        // Для Русского языка
-        "Клише для сочинения.pdf": "https://disk.yandex.ru/i/ВАША_УНИКАЛЬНАЯ_ССЫЛКА_ДЛЯ_КЛИШЕ",
-        "Тренировочные варианты.pdf": "https://disk.yandex.ru/i/ВАША_УНИКАЛЬНАЯ_ССЫЛКА_ДЛЯ_ВАРИАНТОВ",
-        
-        // Для Физики
-        "Все формулы.pdf": "https://disk.yandex.ru/i/DBz9WqhwfR8RTg",
-        "Задачи с решениями.pdf": "https://disk.yandex.ru/i/QnnzXid9yjvvYA"
-    };
-    
-    const materials = { 
-        "Математика": ["Формулы для ОГЭ.pdf", "Тренировочные тесты.pdf"], 
-        "Русский язык": ["Клише для сочинения.pdf", "Тренировочные варианты.pdf"], 
-        "Физика": ["Все формулы.pdf", "Задачи с решениями.pdf"], 
-        "Информатика": ["Шпаргалка.pdf", "Алгоритмы.pdf"] 
-    };
+    "Шпаргалка.pdf": "https://disk.yandex.ru/i/J5xQ6EfI34WzUA",     // для информатики
+    "Алгоритмы.pdf": "https://disk.yandex.ru/i/EwxSO0hef4c5fA",     // для информатики
+    "Формулы для ОГЭ.pdf": "https://disk.yandex.ru/i/5HeprCC505G5Hw",
+    "Тренировочные тесты.pdf": "https://disk.yandex.ru/i/ZQQ9mb2RNrENCQ",
+    "Клише для сочинения.pdf": "https://disk.yandex.ru/i/EwxSO0hef4c5fA",
+    "Тренировочные варианты.pdf": "https://disk.yandex.ru/i/EwxSO0hef4c5fA",
+    "Все формулы.pdf": "https://disk.yandex.ru/i/DBz9WqhwfR8RTg",
+    "Задачи с решениями.pdf": "https://disk.yandex.ru/i/QnnzXid9yjvvYA"
+};
+
+const materials = { 
+    "Математика": ["Формулы для ОГЭ.pdf", "Тренировочные тесты.pdf"], 
+    "Русский язык": ["Клише для сочинения.pdf", "Тренировочные варианты.pdf"], 
+    "Физика": ["Все формулы.pdf", "Задачи с решениями.pdf"], 
+    "Информатика": ["Шпаргалка.pdf", "Алгоритмы.pdf"] 
+};
     
     const courseMaterials = materials[courseName] || ["Материалы в разработке"];
     const modal = document.createElement('div');
