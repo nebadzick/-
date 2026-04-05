@@ -742,7 +742,7 @@
     </style>
 </head>
 <body>
-    <div class="notification" id="notification" style="background: var(--success); display: none;">Скачивание: Шпаргалка.pdf</div>
+    <div class="notification" id="notification" style="background: var(--accent); display: none;">Сначала войдите в систему</div>
 
     <header>
         <div class="container">
@@ -763,18 +763,18 @@
                 <div class="auth-buttons" style="position: relative;">
                     <div class="user-menu">
                         <button class="user-dropdown-btn" id="userDropdownBtn">
-                            <div class="user-avatar" id="userAvatar">А</div>
-                            <span id="userName">Александр админ</span>
+                            <div class="user-avatar" id="userAvatar">?</div>
+                            <span id="userName">Профиль</span>
                             <i class="fas fa-chevron-down"></i>
                         </button>
                         <div class="dropdown-menu" id="dropdownMenu">
-                            <a href="#" class="dropdown-item" id="loginMenuItem" style="display: none;">
+                            <a href="#" class="dropdown-item" id="loginMenuItem" style="display: flex;">
                                 <i class="fas fa-sign-in-alt"></i> Вход в аккаунт
                             </a>
-                            <a href="#" class="dropdown-item" id="registerMenuItem" style="display: none;">
+                            <a href="#" class="dropdown-item" id="registerMenuItem" style="display: flex;">
                                 <i class="fas fa-user-plus"></i> Регистрация
                             </a>
-                            <a href="#" class="dropdown-item" id="logoutMenuItem" style="display: flex;">
+                            <a href="#" class="dropdown-item" id="logoutMenuItem" style="display: none;">
                                 <i class="fas fa-sign-out-alt"></i> Выйти
                             </a>
                         </div>
@@ -785,7 +785,7 @@
     </header>
 
     <!-- Главная страница -->
-    <section class="page" id="home-page">
+    <section class="page active" id="home-page">
         <div class="hero">
             <div class="container">
                 <h2>Экспресс-подготовка от эксперта ОГЭ</h2>
@@ -890,19 +890,19 @@
     </section>
 
     <!-- Мои курсы -->
-    <section class="page active" id="my-courses-page">
+    <section class="page" id="my-courses-page">
         <div class="container">
             <div class="section-title">
                 <h2>Мои курсы</h2>
             </div>
-            <div id="my-courses-restricted" class="restricted-access" style="display: none;">
+            <div id="my-courses-restricted" class="restricted-access" style="display: block;">
                 <i class="fas fa-lock"></i>
                 <h3>Доступ ограничен</h3>
                 <p>Для просмотра ваших курсов необходимо войти в систему</p>
                 <button class="btn btn-primary btn-large" id="goToLoginFromCourses">Войти</button>
             </div>
-            <div id="my-courses-content" style="display: block;">
-                <div class="my-courses" id="myCoursesList"><div class="course-card"><h3>Математика</h3><p>Полный курс подготовки к ОГЭ по математике</p><div style="display: flex; gap: 15px; margin-top: 1.5rem; flex-wrap: wrap;"><button class="btn btn-primary" onclick="openCourseLessons('Математика')"><i class="fas fa-play"></i> Перейти к занятиям</button><button class="btn btn-outline" onclick="showMaterials('Математика')"><i class="fas fa-download"></i> Материалы</button></div></div><div class="course-card"><h3>Физика</h3><p>Подготовка к ОГЭ по физике</p><div style="display: flex; gap: 15px; margin-top: 1.5rem; flex-wrap: wrap;"><button class="btn btn-primary" onclick="openCourseLessons('Физика')"><i class="fas fa-play"></i> Перейти к занятиям</button><button class="btn btn-outline" onclick="showMaterials('Физика')"><i class="fas fa-download"></i> Материалы</button></div></div><div class="course-card"><h3>Информатика</h3><p>Подготовка к ОГЭ по информатике</p><div style="display: flex; gap: 15px; margin-top: 1.5rem; flex-wrap: wrap;"><button class="btn btn-primary" onclick="openCourseLessons('Информатика')"><i class="fas fa-play"></i> Перейти к занятиям</button><button class="btn btn-outline" onclick="showMaterials('Информатика')"><i class="fas fa-download"></i> Материалы</button></div></div></div>
+            <div id="my-courses-content" style="display: none;">
+                <div class="my-courses" id="myCoursesList"><div class="course-card"><h3>Информатика</h3><p>Подготовка к ОГЭ по информатике</p><div style="display: flex; gap: 15px; margin-top: 1.5rem; flex-wrap: wrap;"><button class="btn btn-primary" onclick="openCourseLessons('Информатика')"><i class="fas fa-play"></i> Перейти к занятиям</button><button class="btn btn-outline" onclick="showMaterials('Информатика')"><i class="fas fa-download"></i> Материалы</button></div></div><div class="course-card"><h3>Математика</h3><p>Полный курс подготовки к ОГЭ по математике</p><div style="display: flex; gap: 15px; margin-top: 1.5rem; flex-wrap: wrap;"><button class="btn btn-primary" onclick="openCourseLessons('Математика')"><i class="fas fa-play"></i> Перейти к занятиям</button><button class="btn btn-outline" onclick="showMaterials('Математика')"><i class="fas fa-download"></i> Материалы</button></div></div><div class="course-card"><h3>Физика</h3><p>Подготовка к ОГЭ по физике</p><div style="display: flex; gap: 15px; margin-top: 1.5rem; flex-wrap: wrap;"><button class="btn btn-primary" onclick="openCourseLessons('Физика')"><i class="fas fa-play"></i> Перейти к занятиям</button><button class="btn btn-outline" onclick="showMaterials('Физика')"><i class="fas fa-download"></i> Материалы</button></div></div></div>
             </div>
         </div>
     </section>
@@ -1292,17 +1292,46 @@
             }
         };
         
-        window.showMaterials = function(courseName) {
-            const materials = { "Математика": ["Формулы для ОГЭ.pdf", "Тренировочные тесты.pdf"], "Русский язык": ["Клише для сочинения.pdf", "Тренировочные варианты.pdf"], "Физика": ["Все формулы.pdf", "Задачи с решениями.pdf"], "Информатика": ["Шпаргалка.pdf", "Алгоритмы.pdf"] };
-            const courseMaterials = materials[courseName] || ["Материалы в разработке"];
-            const modal = document.createElement('div');
-            modal.className = 'modal';
-            modal.style.display = 'flex';
-            modal.innerHTML = `<div class="modal-content"><span class="close-modal">&times;</span><h2>📚 Материалы: ${courseName}</h2><div style="margin-top: 1.5rem;">${courseMaterials.map(m => `<div style="padding: 15px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center;"><span><i class="fas fa-file-pdf" style="color: #e74c3c;"></i> ${m}</span><button class="btn btn-outline" style="padding: 8px 20px;" onclick="showNotification('Скачивание: ${m}')">Скачать</button></div>`).join('')}</div></div>`;
-            document.body.appendChild(modal);
-            modal.querySelector('.close-modal').onclick = () => modal.remove();
-            modal.onclick = (e) => { if (e.target === modal) modal.remove(); };
-        };
+       window.showMaterials = function(courseName) {
+    // Ссылки для разных файлов (укажите свои)
+    const fileUrls = {
+        "Шпаргалка.pdf": "https://disk.yandex.ru/i/EwxSO0hef4c5fA",
+        "Алгоритмы.pdf": "https://disk.yandex.ru/i/АЛГОРИТМЫ_ССЫЛКА",
+        "Формулы для ОГЭ.pdf": "https://disk.yandex.ru/i/ФОРМУЛЫ_ССЫЛКА",
+        "Тренировочные тесты.pdf": "https://disk.yandex.ru/i/ТЕСТЫ_ССЫЛКА",
+        "Клише для сочинения.pdf": "https://disk.yandex.ru/i/КЛИШЕ_ССЫЛКА",
+        "Тренировочные варианты.pdf": "https://disk.yandex.ru/i/ВАРИАНТЫ_ССЫЛКА",
+        "Все формулы.pdf": "https://disk.yandex.ru/i/ВСЕ_ФОРМУЛЫ_ССЫЛКА",
+        "Задачи с решениями.pdf": "https://disk.yandex.ru/i/ЗАДАЧИ_ССЫЛКА"
+    };
+    
+    const materials = { 
+        "Математика": ["Формулы для ОГЭ.pdf", "Тренировочные тесты.pdf"], 
+        "Русский язык": ["Клише для сочинения.pdf", "Тренировочные варианты.pdf"], 
+        "Физика": ["Все формулы.pdf", "Задачи с решениями.pdf"], 
+        "Информатика": ["Шпаргалка.pdf", "Алгоритмы.pdf"] 
+    };
+    
+    const courseMaterials = materials[courseName] || ["Материалы в разработке"];
+    const modal = document.createElement('div');
+    modal.className = 'modal';
+    modal.style.display = 'flex';
+    
+    // Создаём HTML с обычными ссылками (не кнопками!)
+    let itemsHtml = '';
+    for (const m of courseMaterials) {
+        const url = fileUrls[m] || "#";
+        itemsHtml += `<div style="padding: 15px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center;">
+            <span><i class="fas fa-file-pdf" style="color: #e74c3c;"></i> ${m}</span>
+            <a href="${url}" target="_blank" class="btn btn-outline" style="padding: 8px 20px; text-decoration: none; display: inline-block;" onclick="showNotification('Открытие: ${m}');">Открыть</a>
+        </div>`;
+    }
+    
+    modal.innerHTML = `<div class="modal-content"><span class="close-modal">&times;</span><h2>📚 Материалы: ${courseName}</h2><div style="margin-top: 1.5rem;">${itemsHtml}</div></div>`;
+    document.body.appendChild(modal);
+    modal.querySelector('.close-modal').onclick = () => modal.remove();
+    modal.onclick = (e) => { if (e.target === modal) modal.remove(); };
+};
 
         async function enrollInCourse(courseName, courseDesc) {
             if (!currentUser) { showNotification('Сначала войдите в систему', 'error'); document.getElementById('loginModal').style.display = 'flex'; return; }
@@ -1420,6 +1449,4 @@
         console.log('✅ Приложение готово!');
     </script>
 
-<div class="modal" style="display: none;"><div class="modal-content"><span class="close-modal">×</span><h2>📚 Материалы: Информатика</h2><div style="margin-top: 1.5rem;"><div style="padding: 15px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center;"><span><i class="fas fa-file-pdf" style="color: #e74c3c;"></i> Шпаргалка.pdf</span><button class="btn btn-outline" style="padding: 8px 20px;" onclick="showNotification('Скачивание: Шпаргалка.pdf'); window.open('https://disk.yandex.ru/i/EwxSO0hef4c5fA', '_blank');">Скачать</button>
-</div><div style="padding: 15px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center;"><span><i class="fas fa-file-pdf" style="color: #e74c3c;"></i> Алгоритмы.pdf</span><button class="btn btn-outline" style="padding: 8px 20px;" onclick="showNotification('Скачивание: Алгоритмы.pdf')">Скачать</button></div></div></div></div>
-<div class="modal" style="display: flex;"><div class="modal-content"><span class="close-modal">×</span><h2>📚 Материалы: Информатика</h2><div style="margin-top: 1.5rem;"><div style="padding: 15px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center;"><span><i class="fas fa-file-pdf" style="color: #e74c3c;"></i> Шпаргалка.pdf</span><button class="btn btn-outline" style="padding: 8px 20px;" onclick="showNotification('Скачивание: Шпаргалка.pdf'); window.open('https://disk.yandex.ru/i/J5xQ6EfI34WzUA', '_blank');">Скачать</button></div><div style="padding: 15px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center;"><span><i class="fas fa-file-pdf" style="color: #e74c3c;"></i> Алгоритмы.pdf</span><button class="btn btn-outline" style="padding: 8px 20px;" onclick="showNotification('Скачивание: Алгоритмы.pdf')">Скачать</button></div></div></div></div></body></html>
+</body></html>
