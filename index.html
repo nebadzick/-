@@ -764,7 +764,7 @@
                     <div class="user-menu">
                         <button class="user-dropdown-btn" id="userDropdownBtn">
                             <div class="user-avatar" id="userAvatar">1</div>
-                            <span id="userName">111</span>
+                            <span id="userName">1111@gmail.com</span>
                             <i class="fas fa-chevron-down"></i>
                         </button>
                         <div class="dropdown-menu" id="dropdownMenu">
@@ -902,7 +902,7 @@
                 <button class="btn btn-primary btn-large" id="goToLoginFromCourses">Войти</button>
             </div>
             <div id="my-courses-content" style="display: block;">
-                <div class="my-courses" id="myCoursesList"><div class="course-card"><h3>Информатика</h3><p>Подготовка к ОГЭ по информатике</p><div style="display: flex; gap: 15px; margin-top: 1.5rem; flex-wrap: wrap;"><button class="btn btn-primary" onclick="openCourseLessons('Информатика')"><i class="fas fa-play"></i> Перейти к занятиям</button><button class="btn btn-outline" onclick="showMaterials('Информатика')"><i class="fas fa-download"></i> Материалы</button></div></div><div class="course-card"><h3>Физика</h3><p>Подготовка к ОГЭ по физике</p><div style="display: flex; gap: 15px; margin-top: 1.5rem; flex-wrap: wrap;"><button class="btn btn-primary" onclick="openCourseLessons('Физика')"><i class="fas fa-play"></i> Перейти к занятиям</button><button class="btn btn-outline" onclick="showMaterials('Физика')"><i class="fas fa-download"></i> Материалы</button></div></div><div class="course-card"><h3>Математика</h3><p>Полный курс подготовки к ОГЭ по математике</p><div style="display: flex; gap: 15px; margin-top: 1.5rem; flex-wrap: wrap;"><button class="btn btn-primary" onclick="openCourseLessons('Математика')"><i class="fas fa-play"></i> Перейти к занятиям</button><button class="btn btn-outline" onclick="showMaterials('Математика')"><i class="fas fa-download"></i> Материалы</button></div></div></div>
+                <div class="my-courses" id="myCoursesList"><div class="course-card"><h3>Информатика</h3><p>Подготовка к ОГЭ по информатике</p><div style="display: flex; gap: 15px; margin-top: 1.5rem; flex-wrap: wrap;"><button class="btn btn-primary" onclick="openCourseLessons('Информатика')"><i class="fas fa-play"></i> Перейти к занятиям</button><button class="btn btn-outline" onclick="showMaterials('Информатика')"><i class="fas fa-download"></i> Материалы</button></div></div></div>
             </div>
         </div>
     </section>
@@ -993,7 +993,9 @@
             <button class="btn btn-outline" id="backToCoursesBtn" style="margin-bottom: 25px; font-size: 1rem;">
                 <i class="fas fa-arrow-left"></i> Назад к моим курсам
             </button>
-            <div id="lessonsContent"><div class="section-title"><h2>Информатика. Подготовка к ОГЭ</h2></div><div class="lessons-wrapper"><div class="lessons-sidebar"><div class="schedule-container"><h3><i class="fas fa-list"></i> Список уроков</h3><div id="lessonsList"><div class="lesson-item" data-lesson-id="inf1" onclick="selectLesson('Информатика', 'inf1')"><i></i>    Е Г Э</div><div class="lesson-item active" data-lesson-id="inf2" onclick="selectLesson('Информатика', 'inf2')"><i class="fas fa-book"></i> Урок 2: Таблицы и диаграммы</div></div></div></div><div class="lesson-content-area"><div class="lesson-content" id="lessonContent"><h3>📖 Работа с электронными таблицами</h3><p><strong>Основные функции:</strong></p><ul><li>SUM() - сумма</li><li>AVERAGE() - среднее</li><li>MAX() / MIN() - максимум/минимум</li></ul><p><strong>Типы диаграмм:</strong></p><ul><li>Гистограмма - сравнение данных</li><li>Круговая - доли целого</li><li>График - изменение во времени</li></ul></div></div></div></div>
+            <div id="lessonsContent"><div class="section-title"><h2>Информатика. Подготовка к ОГЭ</h2></div><div class="lessons-wrapper"><div class="lessons-sidebar"><div class="schedule-container"><h3><i class="fas fa-list"></i> Список уроков</h3><div id="lessonsList"><div class="lesson-item active" data-lesson-id="inf1" onclick="selectLesson('Информатика', 'inf1')"><i class="fas fa-book"></i>ОГЭ</div><div class="lesson-item " data-lesson-id="inf2" onclick="selectLesson('Информатика', 'inf2')"><i class="fas fa-book"></i> Урок 2: Таблицы и диаграммы</div></div></div></div><div class="lesson-content-area"><div class="lesson-content" id="lessonContent"><h3>📖 Как устроен экзамен?</h3><p><strong>Основные факты:
+
+</strong></p><ul><li> Всего в работе 16 заданий.</li><li> Экзамен длится 2 часа 30 минут (150 минут).</li><li>   Часть 1 содержит 10 заданий базового уровня с кратким ответом (решаются без компьютера или с его минимальным использованием).</li><li>  Часть 2 содержит 6 заданий, которые необходимо выполнить на компьютере.</li></ul></div></div></div></div>
         </div>
     </section>
 
@@ -1222,8 +1224,8 @@
             "Информатика": {
                 title: "Информатика. Подготовка к ОГЭ",
                 lessons: [
-                    { id: "inf1", title: "Урок 1: Алгоритмы", content: `<h3>📖 Основы алгоритмизации</h3><p><strong>Типы алгоритмов:</strong></p><ul><li>Линейный (последовательный)</li><li>Разветвляющийся (условный)</li><li>Циклический (с повторением)</li></ul><pre>// Линейный\naction1\naction2\n\n// Условный\nif (условие) {\n    action1\n} else {\n    action2\n}</pre>` },
-                    { id: "inf2", title: "Урок 2: Таблицы и диаграммы", content: `<h3>📖 Работа с электронными таблицами</h3><p><strong>Основные функции:</strong></p><ul><li>SUM() - сумма</li><li>AVERAGE() - среднее</li><li>MAX() / MIN() - максимум/минимум</li></ul><p><strong>Типы диаграмм:</strong></p><ul><li>Гистограмма - сравнение данных</li><li>Круговая - доли целого</li><li>График - изменение во времени</li></ul>` }
+                    { id: "inf1", title: "ОГЭ", content: `<h3>📖 Как устроен экзамен?</h3><p><strong>Основные факты:</strong></p><ul><li>Всего в работе 16 заданий.</li><li>Экзамен длится 2 часа 30 минут (150 минут).</li><li> Часть 1 содержит 10 заданий базового уровня с кратким ответом (решаются без компьютера или с его минимальным использованием).</li></ul></li><li> Часть 2 содержит 6 заданий, которые необходимо выполнить на компьютере.</li></ul>` },
+                    { id: "inf2", title: "ЕГЭ", content: `<h3>📖 Как устроен экзамен?</h3><p><strong>Основные факты:</strong></p><ul><li>Всего заданий: 27.</li><li> Время на экзамен: 235 минут (3 часа 55 минут).</li><li> Для выполнения работы вам будут доступны: редактор электронных таблиц (Excel/Calc), текстовый редактор (Word/Writer), среды программирования (Python, C++, Pascal, Java, C#) и стандартный калькулятор.</li></ul><p><strong>Важное уточнение:</strong></p><ul><li>Экзамен по информатике (КЕГЭ) проводится полностью на компьютерах. У вас не будет бумажных бланков для ответов (черновики выдаются, но не проверяются). Все ответы вносятся в специальное программное обеспечение.</li><li>   Все задания требуют краткого ответа (число или последовательность символов).</li></ul>` }
                 ]
             }
         };
@@ -1419,6 +1421,7 @@
         
         console.log('✅ Приложение готово!');
     </script>
+
 
 
 </body></html>
