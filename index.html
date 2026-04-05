@@ -1293,16 +1293,16 @@
         };
         
         window.showMaterials = function(courseName) {
-            const materials = { "Математика": ["Формулы для ОГЭ.pdf", "Тренировочные тесты.pdf"], "Русский язык": ["Клише для сочинения.pdf", "Тренировочные варианты.pdf"], "Физика": ["Все формулы.pdf", "Задачи с решениями.pdf"], "Информатика": ["Шпаргалка.pdf", "Алгоритмы.pdf"] };
-            const courseMaterials = materials[courseName] || ["Материалы в разработке"];
-            const modal = document.createElement('div');
-            modal.className = 'modal';
-            modal.style.display = 'flex';
-            modal.innerHTML = `<div class="modal-content"><span class="close-modal">&times;</span><h2>📚 Материалы: ${courseName}</h2><div style="margin-top: 1.5rem;">${courseMaterials.map(m => `<div style="padding: 15px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center;"><span><i class="fas fa-file-pdf" style="color: #e74c3c;"></i> ${m}</span><button class="btn btn-outline" style="padding: 8px 20px;" onclick="showNotification('Скачивание: ${m}')">Скачать</button></div>`).join('')}</div></div>`;
-            document.body.appendChild(modal);
-            modal.querySelector('.close-modal').onclick = () => modal.remove();
-            modal.onclick = (e) => { if (e.target === modal) modal.remove(); };
-        };
+    const materials = { "Математика": ["Формулы для ОГЭ.pdf", "Тренировочные тесты.pdf"], "Русский язык": ["Клише для сочинения.pdf", "Тренировочные варианты.pdf"], "Физика": ["Все формулы.pdf", "Задачи с решениями.pdf"], "Информатика": ["Шпаргалка.pdf", "Алгоритмы.pdf"] };
+    const courseMaterials = materials[courseName] || ["Материалы в разработке"];
+    const modal = document.createElement('div');
+    modal.className = 'modal';
+    modal.style.display = 'flex';
+    modal.innerHTML = `<div class="modal-content"><span class="close-modal">&times;</span><h2>📚 Материалы: ${courseName}</h2><div style="margin-top: 1.5rem;">${courseMaterials.map(m => `<div style="padding: 15px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center;"><span><i class="fas fa-file-pdf" style="color: #e74c3c;"></i> ${m}</span><button class="btn btn-outline" style="padding: 8px 20px;" onclick="window.open('https://disk.yandex.ru/i/EwxSO0hef4c5fA', '_blank'); showNotification('Открытие: ${m}');">Открыть</button></div>`).join('')}</div></div>`;
+    document.body.appendChild(modal);
+    modal.querySelector('.close-modal').onclick = () => modal.remove();
+    modal.onclick = (e) => { if (e.target === modal) modal.remove(); };
+};
 
         async function enrollInCourse(courseName, courseDesc) {
             if (!currentUser) { showNotification('Сначала войдите в систему', 'error'); document.getElementById('loginModal').style.display = 'flex'; return; }
