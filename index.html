@@ -1292,13 +1292,42 @@
             }
         };
         
-        window.showMaterials = function(courseName) {
-    const materials = { "Математика": ["Формулы для ОГЭ.pdf", "Тренировочные тесты.pdf"], "Русский язык": ["Клише для сочинения.pdf", "Тренировочные варианты.pdf"], "Физика": ["Все формулы.pdf", "Задачи с решениями.pdf"], "Информатика": ["Шпаргалка.pdf", "Алгоритмы.pdf"] };
+       window.showMaterials = function(courseName) {
+    // Ссылки для разных файлов (укажите свои)
+    const fileUrls = {
+        "Шпаргалка.pdf": "https://disk.yandex.ru/i/J5xQ6EfI34WzUA",
+        "Алгоритмы.pdf": "https://disk.yandex.ru/i/EwxSO0hef4c5fA",
+        "Формулы для ОГЭ.pdf": "https://disk.yandex.ru/i/ФОРМУЛЫ_ССЫЛКА",
+        "Тренировочные тесты.pdf": "https://disk.yandex.ru/i/ТЕСТЫ_ССЫЛКА",
+        "Клише для сочинения.pdf": "https://disk.yandex.ru/i/КЛИШЕ_ССЫЛКА",
+        "Тренировочные варианты.pdf": "https://disk.yandex.ru/i/ВАРИАНТЫ_ССЫЛКА",
+        "Все формулы.pdf": "https://disk.yandex.ru/i/ВСЕ_ФОРМУЛЫ_ССЫЛКА",
+        "Задачи с решениями.pdf": "https://disk.yandex.ru/i/ЗАДАЧИ_ССЫЛКА"
+    };
+    
+    const materials = { 
+        "Математика": ["Формулы для ОГЭ.pdf", "Тренировочные тесты.pdf"], 
+        "Русский язык": ["Клише для сочинения.pdf", "Тренировочные варианты.pdf"], 
+        "Физика": ["Все формулы.pdf", "Задачи с решениями.pdf"], 
+        "Информатика": ["Шпаргалка.pdf", "Алгоритмы.pdf"] 
+    };
+    
     const courseMaterials = materials[courseName] || ["Материалы в разработке"];
     const modal = document.createElement('div');
     modal.className = 'modal';
     modal.style.display = 'flex';
-    modal.innerHTML = `<div class="modal-content"><span class="close-modal">&times;</span><h2>📚 Материалы: ${courseName}</h2><div style="margin-top: 1.5rem;">${courseMaterials.map(m => `<div style="padding: 15px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center;"><span><i class="fas fa-file-pdf" style="color: #e74c3c;"></i> ${m}</span><button class="btn btn-outline" style="padding: 8px 20px;" onclick="window.open('https://disk.yandex.ru/i/EwxSO0hef4c5fA', '_blank'); showNotification('Открытие: ${m}');">Открыть</button></div>`).join('')}</div></div>`;
+    
+    // Создаём HTML с разными ссылками для каждого файла
+    let itemsHtml = '';
+    for (const m of courseMaterials) {
+        const url = fileUrls[m] || "https://disk.yandex.ru/i/EwxSO0hef4c5fA"; // ссылка по умолчанию
+        itemsHtml += `<div style="padding: 15px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center;">
+            <span><i class="fas fa-file-pdf" style="color: #e74c3c;"></i> ${m}</span>
+            <button class="btn btn-outline" style="padding: 8px 20px;" onclick="window.open('${url}', '_blank'); showNotification('Открытие: ${m}');">Открыть</button>
+        </div>`;
+    }
+    
+    modal.innerHTML = `<div class="modal-content"><span class="close-modal">&times;</span><h2>📚 Материалы: ${courseName}</h2><div style="margin-top: 1.5rem;">${itemsHtml}</div></div>`;
     document.body.appendChild(modal);
     modal.querySelector('.close-modal').onclick = () => modal.remove();
     modal.onclick = (e) => { if (e.target === modal) modal.remove(); };
