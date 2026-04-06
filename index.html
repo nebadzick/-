@@ -1297,21 +1297,21 @@
        window.showMaterials = function(courseName) {
     // Ссылки для разных файлов
     const fileUrls = {
-        "Физика ЕГЭ.pdf": "https://disk.yandex.ru/i/Kl7jPBQaI1t4eA",
-        "Физика ОГЭ.pdf": "https://disk.yandex.ru/i/84SIOziFgnSJ7w",
+        "инфа": "https://disk.yandex.ru/i/Kl7jPBQaI1t4eA",
+        "инфа1": "https://disk.yandex.ru/i/84SIOziFgnSJ7w",
         "Формулы для ОГЭ.pdf": "https://disk.yandex.ru/i/KLXR55IvdKbVLw",
         "Тренировочные тесты.pdf": "https://disk.yandex.ru/i/Mv1LdDH67avBrw",
         "Клише для сочинения.pdf": "https://disk.yandex.ru/i/DBz9WqhwfR8RTg",
         "Тренировочные варианты.pdf": "https://disk.yandex.ru/i/QnnzXid9yjvvYA",
-        "Все формулы.pdf": "https://disk.yandex.ru/i/xaTktE2zwTjtBg",
-        "Задачи с решениями.pdf": "https://disk.yandex.ru/i/4qxjicHDv1XVAw"
+        "Физика ЕГЭ.pdf": "https://disk.yandex.ru/i/Kl7jPBQaI1t4eA",
+        "Физика ОГЭ.pdf": "https://disk.yandex.ru/i/4qxjicHDv1XVAw"
     };
     
     const materials = { 
         "Математика": ["Формулы для ОГЭ.pdf", "Тренировочные тесты.pdf"], 
         "Русский язык": ["Клише для сочинения.pdf", "Тренировочные варианты.pdf"], 
-        "Физика": ["Все формулы.pdf", "Задачи с решениями.pdf"], 
-        "Информатика": ["Физика ЕГЭ.pdf", "Физика ОГЭ.pdf"] 
+        "Физика": ["Физика ЕГЭ.pdf", "Физика ОГЭ.pdf"], 
+        "Информатика": ["инфа", "инфа1"] 
     };
     
     const courseMaterials = materials[courseName] || ["Материалы в разработке"];
