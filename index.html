@@ -709,6 +709,53 @@
             font-weight: bold;
             font-size: 1.2rem;
         }
+/* Анимация песочных часов */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.hourglass-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    flex-direction: column;
+    gap: 25px;
+    font-family: 'Segoe UI', sans-serif;
+    animation: fadeIn 0.3s ease;
+}
+
+.hourglass-icon {
+    font-size: 85px;
+    color: #FFD966;
+    filter: drop-shadow(0 0 15px rgba(0,0,0,0.5));
+    animation: spin 2s linear infinite;
+}
+
+.redirect-text {
+    font-size: 28px;
+    font-weight: bold;
+    color: white;
+    background: rgba(0,0,0,0.6);
+    padding: 15px 35px;
+    border-radius: 60px;
+    letter-spacing: 1px;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 0 30px rgba(0,0,0,0.3);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
 
         @media (max-width: 768px) {
             body {
@@ -1116,12 +1163,12 @@
                 <div class="footer-column">
     <h3>Соцсети</h3>
     <p>
-        <a href="https://max.ru/join/XA2NlbK9LmN8uaoq8EfgHnBtG2R3HhvF219s7L2rB0s" target="_blank" rel="noopener noreferrer" style="color: white !important; text-decoration: none !important; background-color: transparent !important;">
+        <a href="#" onclick="redirectWithDelay(event, 'https://max.ru/join/XA2NlbK9LmN8uaoq8EfgHnBtG2R3HhvF219s7L2rB0s')" style="color: white !important; text-decoration: none !important; background-color: transparent !important;">
             <i class="fab fa-vk"></i> MAX
         </a>
     </p>
     <p>
-        <a href="https://t.me/exp_oge" target="_blank" rel="noopener noreferrer" style="color: white !important; text-decoration: none !important; background-color: transparent !important;">
+        <a href="#" onclick="redirectWithDelay(event, 'https://t.me/exp_oge')" style="color: white !important; text-decoration: none !important; background-color: transparent !important;">
             <i class="fab fa-telegram"></i> Telegram
         </a>
     </p>
@@ -1451,6 +1498,46 @@
         document.getElementById('switchToLogin').onclick = (e) => { e.preventDefault(); document.getElementById('registerModal').style.display = 'none'; document.getElementById('loginModal').style.display = 'flex'; };
         
         console.log('✅ Приложение готово!');
+let activeRedirectTimer = null;
+let activeOverlay = null;
+
+window.redirectWithDelay = function(event, targetUrl) {
+    event.preventDefault();
+    
+    // Если уже есть активный таймер — отменяем его и убираем оверлей
+    if (activeRedirectTimer) {
+        clearTimeout(activeRedirectTimer);
+        activeRedirectTimer = null;
+    }
+    if (activeOverlay) {
+        activeOverlay.remove();
+        activeOverlay = null;
+    }
+    
+    // Создаём оверлей с песочными часами
+    const overlay = document.createElement('div');
+    overlay.className = 'hourglass-overlay';
+    overlay.innerHTML = `
+        <div class="hourglass-icon">
+            <i class="fas fa-hourglass-half"></i>
+        </div>
+        <div class="redirect-text">
+            ⏳ Перенаправляю...
+        </div>
+    `;
+    document.body.appendChild(overlay);
+    activeOverlay = overlay;
+    
+    // Запускаем таймер на 5 секунд
+    activeRedirectTimer = setTimeout(() => {
+        if (activeOverlay) {
+            activeOverlay.remove();
+            activeOverlay = null;
+        }
+        activeRedirectTimer = null;
+        window.open(targetUrl, '_blank');
+    }, 5000);
+};
     </script>
 
 
