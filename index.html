@@ -1108,7 +1108,7 @@
             <div class="footer-content">
                 <div class="footer-column">
                     <h3>Эксп ОГЭ/ЕГЭ</h3>
-                    <p>Подготовка к ОГЭ и ЕГЭ организована на основе материалов из баз . В процессе изучения детально разбираются все типы экзаменационных заданий, прорабатываются сложные темы и типичные ошибки. Такой подход обеспечивает системные знания и позволяет выйти на стабильно высокий результат.</p>
+                    <p>Подготовка к ОГЭ и ЕГЭ организована на основе материалов из баз . В процессе изучения детально разбираются все типы экзаменационных заданий, прорабатываются сложные темы и типичные ошибки.</p>
                 </div>
                 <div class="footer-column">
                     <h3>Контакты</h3>
@@ -1117,10 +1117,18 @@
                     <p><i class="fab fa-telegram"></i> t.me/exp_oge</p>
                 </div>
                 <div class="footer-column">
-                    <h3>Соцсети</h3>
-                    <p><i class="fab fa-vk"></i> ВКонтакте</p>
-                    <p><i class="fab fa-youtube"></i> YouTube</p>
-                </div>
+    <h3>Соцсети</h3>
+    <p>
+        <a href="https://max.ru/join/XA2NlbK9LmN8uaoq8EfgHnBtG2R3HhvF219s7L2rB0s" target="_blank" rel="noopener noreferrer" style="color: white !important; text-decoration: none !important; background-color: transparent !important;">
+            <i class="fab fa-vk"></i> MAX
+        </a>
+    </p>
+    <p>
+        <a href="#" target="_blank" rel="noopener noreferrer" style="color: white !important; text-decoration: none !important; background-color: transparent !important;">
+            <i class="fab fa-youtube"></i> YouTube
+        </a>
+    </p>
+</div>
             </div>
             <div class="copyright">
                 <p>© 2026 Эксп ОГЭ/ЕГЭ</p>
@@ -1297,10 +1305,10 @@
        window.showMaterials = function(courseName) {
     // Ссылки для разных файлов
     const fileUrls = {
-        "Информатика ЕГЭ.pdf": "https://disk.yandex.ru/i/Kl7jPBQaI1t4eA",
-        "Информатика ОГЭ.pdf": "https://disk.yandex.ru/i/84SIOziFgnSJ7w",
-        "Математика ЕГЭ.pdf": "https://disk.yandex.ru/i/KLXR55IvdKbVLw",
-        "Математика ОГЭ.pdf": "https://disk.yandex.ru/i/Mv1LdDH67avBrw",
+        "инфа": "https://disk.yandex.ru/i/Kl7jPBQaI1t4eA",
+        "инфа1": "https://disk.yandex.ru/i/84SIOziFgnSJ7w",
+        "Формулы для ОГЭ.pdf": "https://disk.yandex.ru/i/KLXR55IvdKbVLw",
+        "Тренировочные тесты.pdf": "https://disk.yandex.ru/i/Mv1LdDH67avBrw",
         "Клише для сочинения.pdf": "https://disk.yandex.ru/i/DBz9WqhwfR8RTg",
         "Тренировочные варианты.pdf": "https://disk.yandex.ru/i/QnnzXid9yjvvYA",
         "Физика ЕГЭ.pdf": "https://disk.yandex.ru/i/Kl7jPBQaI1t4eA",
@@ -1308,10 +1316,10 @@
     };
     
     const materials = { 
-        "Математика": ["Математика ЕГЭ.pdf", "Математика ОГЭ.pdf"], 
+        "Математика": ["Формулы для ОГЭ.pdf", "Тренировочные тесты.pdf"], 
         "Русский язык": ["Клише для сочинения.pdf", "Тренировочные варианты.pdf"], 
         "Физика": ["Физика ЕГЭ.pdf", "Физика ОГЭ.pdf"], 
-        "Информатика": ["Информатика ЕГЭ.pdf", "Информатика ОГЭ.pdf"] 
+        "Информатика": ["инфа", "инфа1"] 
     };
     
     const courseMaterials = materials[courseName] || ["Материалы в разработке"];
