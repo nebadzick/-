@@ -1500,6 +1500,7 @@
         console.log('✅ Приложение готово!');
 let activeRedirectTimer = null;
 let activeOverlay = null;
+let pendingUrl = null;
 
 window.redirectWithDelay = function(event, targetUrl) {
     event.preventDefault();
@@ -1513,6 +1514,9 @@ window.redirectWithDelay = function(event, targetUrl) {
         activeOverlay.remove();
         activeOverlay = null;
     }
+    
+    // Сохраняем URL для перенаправления
+    pendingUrl = targetUrl;
     
     // Создаём оверлей с песочными часами
     const overlay = document.createElement('div');
@@ -1535,7 +1539,13 @@ window.redirectWithDelay = function(event, targetUrl) {
             activeOverlay = null;
         }
         activeRedirectTimer = null;
-        window.open(targetUrl, '_blank');
+        
+        // Используем window.location.href вместо window.open
+        // Так не блокируется браузером
+        if (pendingUrl) {
+            window.location.href = pendingUrl;
+        }
+        pendingUrl = null;
     }, 5000);
 };
     </script>
