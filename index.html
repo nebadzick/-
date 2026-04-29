@@ -1323,21 +1323,26 @@
         }
 
         async function loadMyCourses() {
-            if (!currentUser) return;
             const container = document.getElementById('myCoursesList');
             container.innerHTML = '<p style="text-align: center; font-size: 1.2rem;">Загрузка...</p>';
             
             try {
-                const coursesQuery = await db.collection('courses').where('userId', '==', currentUser.uid).get();
+                let courses = [];
+                if (currentUser) {
+                    const coursesQuery = await db.collection('courses').where('userId', '==', currentUser.uid).get();
+                    courses = coursesQuery.docs.map(doc => doc.data());
+                } else {
+                    const saved = localStorage.getItem('guest_courses');
+                    if (saved) courses = JSON.parse(saved);
+                }
                 
-                if (coursesQuery.empty) {
+                if (courses.length === 0) {
                     container.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 3rem;"><i class="fas fa-book-open" style="font-size: 4rem; color: var(--gray);"></i><h3 style="margin: 1rem 0;">У вас пока нет курсов</h3><p>Запишитесь на курс в разделе "Курсы"</p><button class="btn btn-primary btn-large" onclick="showPage('courses')">Перейти к курсам</button></div>`;
                     return;
                 }
                 
                 container.innerHTML = '';
-                coursesQuery.forEach(doc => {
-                    const course = doc.data();
+                courses.forEach(course => {
                     const card = document.createElement('div');
                     card.className = 'course-card';
                     card.innerHTML = `<h3>${course.name}</h3><p>${course.description}</p><div style="display: flex; gap: 15px; margin-top: 1.5rem; flex-wrap: wrap;"><button class="btn btn-primary" onclick="openCourseLessons('${course.name}')"><i class="fas fa-play"></i> Перейти к занятиям</button><button class="btn btn-outline" onclick="showMaterials('${course.name}')"><i class="fas fa-download"></i> Материалы</button></div>`;
@@ -1411,11 +1416,21 @@
 };
 
         async function enrollInCourse(courseName, courseDesc) {
-            if (!currentUser) { showNotification('Сначала войдите в систему', 'error'); document.getElementById('loginModal').style.display = 'flex'; return; }
             try {
-                const existing = await db.collection('courses').where('userId', '==', currentUser.uid).where('name', '==', courseName).get();
-                if (!existing.empty) { showNotification('Вы уже записаны на этот курс', 'error'); return; }
-                await db.collection('courses').add({ userId: currentUser.uid, name: courseName, description: courseDesc, enrolledAt: firebase.firestore.FieldValue.serverTimestamp() });
+                if (currentUser) {
+                    const existing = await db.collection('courses').where('userId', '==', currentUser.uid).where('name', '==', courseName).get();
+                    if (!existing.empty) { showNotification('Вы уже записаны на этот курс', 'error'); return; }
+                    await db.collection('courses').add({ userId: currentUser.uid, name: courseName, description: courseDesc, enrolledAt: firebase.firestore.FieldValue.serverTimestamp() });
+                } else {
+                    const saved = localStorage.getItem('guest_courses');
+                    let courses = saved ? JSON.parse(saved) : [];
+                    if (courses.some(c => c.name === courseName)) {
+                        showNotification('Вы уже записаны на этот курс', 'error');
+                        return;
+                    }
+                    courses.push({ name: courseName, description: courseDesc });
+                    localStorage.setItem('guest_courses', JSON.stringify(courses));
+                }
                 showNotification(`Вы записаны на курс "${courseName}"!`);
                 loadMyCourses();
             } catch (error) { showNotification('Ошибка записи', 'error'); }
@@ -1444,8 +1459,9 @@
                 loginMenuItem.style.display = 'flex';
                 registerMenuItem.style.display = 'flex';
                 logoutMenuItem.style.display = 'none';
-                document.getElementById('my-courses-restricted').style.display = 'block';
-                document.getElementById('my-courses-content').style.display = 'none';
+                document.getElementById('my-courses-restricted').style.display = 'none';
+                document.getElementById('my-courses-content').style.display = 'block';
+                loadMyCourses();
             }
         }
 
@@ -1461,6 +1477,16 @@
             try {
                 const userCredential = await auth.createUserWithEmailAndPassword(email, password);
                 await userCredential.user.updateProfile({ displayName: name });
+                
+                const guestCourses = localStorage.getItem('guest_courses');
+                if (guestCourses) {
+                    const courses = JSON.parse(guestCourses);
+                    for (const course of courses) {
+                        await db.collection('courses').add({ userId: userCredential.user.uid, name: course.name, description: course.description, enrolledAt: firebase.firestore.FieldValue.serverTimestamp() });
+                    }
+                    localStorage.removeItem('guest_courses');
+                }
+                
                 showNotification('Регистрация успешна!');
                 document.getElementById('registerModal').style.display = 'none';
                 document.getElementById('registerForm').reset();
@@ -1472,14 +1498,27 @@
             const email = document.getElementById('loginEmail').value;
             const password = document.getElementById('loginPassword').value;
             try {
-                await auth.signInWithEmailAndPassword(email, password);
+                const userCredential = await auth.signInWithEmailAndPassword(email, password);
+                
+                const guestCourses = localStorage.getItem('guest_courses');
+                if (guestCourses) {
+                    const courses = JSON.parse(guestCourses);
+                    for (const course of courses) {
+                        const existing = await db.collection('courses').where('userId', '==', userCredential.user.uid).where('name', '==', course.name).get();
+                        if (existing.empty) {
+                            await db.collection('courses').add({ userId: userCredential.user.uid, name: course.name, description: course.description, enrolledAt: firebase.firestore.FieldValue.serverTimestamp() });
+                        }
+                    }
+                    localStorage.removeItem('guest_courses');
+                }
+                
                 showNotification('Добро пожаловать!');
                 document.getElementById('loginModal').style.display = 'none';
                 document.getElementById('loginForm').reset();
             } catch (error) { showNotification('Неверный email или пароль', 'error'); }
         });
         
-        document.getElementById('logoutMenuItem').addEventListener('click', async () => { await auth.signOut(); showNotification('Вы вышли из системы'); });
+        document.getElementById('logoutMenuItem').addEventListener('click', async () => { await auth.signOut(); showNotification('Вы вышли из системы'); loadMyCourses(); });
         auth.onAuthStateChanged((user) => { currentUser = user; updateUI(); });
         
       
