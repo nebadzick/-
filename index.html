@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>⚡ Groq Эмоджи - Молниеносный голосовой ассистент</title>
+    <title>⚡ Groq Эмоджи - Текстовый ассистент</title>
     <style>
         * {
-            user-select: none;
             box-sizing: border-box;
         }
 
@@ -24,12 +23,12 @@
         .container {
             background: rgba(20, 25, 45, 0.75);
             backdrop-filter: blur(15px);
-            border-radius: 64px;
-            padding: 30px 25px 40px 25px;
+            border-radius: 48px;
+            padding: 30px 25px 35px 25px;
             box-shadow: 0 25px 45px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.08);
             border: 1px solid rgba(255,255,255,0.12);
             width: 100%;
-            max-width: 600px;
+            max-width: 700px;
         }
 
         .badge {
@@ -62,202 +61,240 @@
 
         .emoji-zone {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .emoji-face {
-            font-size: 160px;
-            filter: drop-shadow(0 20px 30px rgba(0,0,0,0.5));
-            transition: transform 0.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            font-size: 100px;
+            filter: drop-shadow(0 15px 25px rgba(0,0,0,0.4));
+            transition: transform 0.2s ease;
             display: inline-block;
-            cursor: pointer;
-        }
-
-        .emoji-face:active {
-            transform: scale(0.92);
         }
 
         .status-text {
             background: #00000066;
             display: inline-block;
-            padding: 8px 22px;
+            padding: 6px 18px;
             border-radius: 60px;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             font-weight: 500;
-            margin-top: 10px;
+            margin-top: 8px;
             color: #e2e8f0;
         }
 
-        .heard-section {
+        /* Чат область */
+        .chat-container {
             background: #0b0e14cc;
-            border-radius: 38px;
+            border-radius: 28px;
             padding: 20px;
-            margin: 20px 0;
-            border-left: 3px solid #f97316;
-        }
-
-        .label {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            font-weight: 700;
-            letter-spacing: 2px;
-            color: #94a3b8;
-            display: block;
-            margin-bottom: 8px;
-        }
-
-        .transcript-text {
-            font-size: 1.1rem;
-            color: #f1f5f9;
-            font-weight: 500;
-            line-height: 1.4;
-            word-break: break-word;
-            min-height: 60px;
-        }
-
-        .answer-section {
-            background: #1e293bb3;
-            border-radius: 38px;
-            padding: 20px;
-            margin-bottom: 25px;
-            border-right: 3px solid #f97316;
-        }
-
-        .bot-message {
-            color: #cbd5e6;
-            font-size: 1rem;
-            line-height: 1.5;
-            min-height: 80px;
-        }
-
-        .button-group {
+            margin: 15px 0;
+            min-height: 350px;
+            max-height: 450px;
+            overflow-y: auto;
             display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            border: none;
-            background: #2d3a5e;
-            padding: 14px 28px;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1rem;
-            color: white;
-            display: inline-flex;
-            align-items: center;
+            flex-direction: column;
             gap: 12px;
-            cursor: pointer;
-            transition: 0.15s linear;
+        }
+
+        .message {
+            display: flex;
+            gap: 12px;
+            max-width: 85%;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .user-message {
+            align-self: flex-end;
+            flex-direction: row-reverse;
+        }
+
+        .user-message .message-bubble {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            color: white;
+            border-radius: 22px 22px 6px 22px;
+        }
+
+        .bot-message .message-bubble {
+            background: #1e293b;
+            color: #e2e8f0;
+            border-radius: 22px 22px 22px 6px;
+            border: 1px solid #334155;
+        }
+
+        .message-avatar {
+            font-size: 28px;
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .message-bubble {
+            padding: 12px 18px;
+            font-size: 0.95rem;
+            line-height: 1.45;
+            word-break: break-word;
+        }
+
+        .message-time {
+            font-size: 0.65rem;
+            color: #64748b;
+            margin-top: 4px;
+            margin-left: 50px;
+        }
+
+        /* Ввод сообщения */
+        .input-area {
+            display: flex;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .message-input {
+            flex: 1;
+            background: #0f1119;
+            border: 1px solid #334155;
+            padding: 14px 18px;
+            border-radius: 32px;
+            color: #e2e8f0;
+            font-size: 0.95rem;
             font-family: inherit;
+            outline: none;
+            resize: none;
         }
 
-        .btn-primary {
+        .message-input:focus {
+            border-color: #f97316;
+            box-shadow: 0 0 0 2px #f9731640;
+        }
+
+        .send-btn {
             background: linear-gradient(135deg, #f97316, #ea580c);
-            box-shadow: 0 4px 15px #f9731640;
+            border: none;
+            padding: 0 24px;
+            border-radius: 40px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: 0.15s;
+            color: white;
         }
 
-        .btn-primary:hover {
+        .send-btn:hover {
             transform: scale(1.02);
             background: linear-gradient(135deg, #ea580c, #c2410c);
         }
 
-        .btn-secondary {
-            background: #334155;
-        }
-
-        .btn-secondary:hover {
-            background: #475569;
-        }
-
-        .btn:active {
+        .send-btn:active {
             transform: scale(0.96);
         }
 
+        .clear-btn {
+            background: #334155;
+            border: none;
+            padding: 0 20px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            color: #cbd5e6;
+        }
+
+        .clear-btn:hover {
+            background: #475569;
+        }
+
         .shortcut-hint {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: #62748e;
             text-align: center;
-            margin-top: 20px;
-            padding-top: 18px;
-            border-top: 1px solid #ffffff1a;
+            margin-top: 15px;
         }
 
         kbd {
             background: #0f0f1a;
-            border-radius: 8px;
-            padding: 4px 10px;
+            border-radius: 6px;
+            padding: 3px 8px;
             font-family: monospace;
             font-weight: bold;
             color: #cbd5e6;
             border: 1px solid #3e4a66;
         }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); text-shadow: 0 0 20px #f97316; }
+        .typing-indicator {
+            display: flex;
+            gap: 4px;
+            padding: 10px 16px;
         }
 
-        @keyframes thinking {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 1; }
+        .typing-indicator span {
+            width: 8px;
+            height: 8px;
+            background: #94a3b8;
+            border-radius: 50%;
+            animation: typing 1.4s infinite;
         }
 
-        .listening .emoji-face {
-            animation: pulse 0.8s infinite ease;
+        .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+        .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes typing {
+            0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+            30% { transform: translateY(-8px); opacity: 1; }
         }
 
-        .thinking-dots {
-            display: inline-block;
+        /* Скрытый временный блок для индикатора печати */
+        .temp-message {
+            display: flex;
+            gap: 12px;
+            max-width: 85%;
         }
-        .thinking-dots span {
-            animation: thinking 1.4s infinite;
-            animation-fill-mode: both;
-        }
-        .thinking-dots span:nth-child(2) { animation-delay: 0.2s; }
-        .thinking-dots span:nth-child(3) { animation-delay: 0.4s; }
     </style>
 </head>
 <body>
 
-<div class="container" id="app">
+<div class="container">
     <div class="badge">
-        <span>⚡ GROQ AI • Молниеносный</span>
+        <span>⚡ GROQ AI • Llama 3.1 70B</span>
     </div>
     <div class="api-status" id="apiStatus">
-        ✅ Groq API готов • Модель: llama-3.1-70b-versatile
+        ✅ Groq API готов • Просто напиши сообщение
     </div>
 
     <div class="emoji-zone">
-        <div class="emoji-face" id="emojiMain">😴</div>
-        <div class="status-text" id="statusLabel">Сплю. Нажми на меня</div>
+        <div class="emoji-face" id="emojiMain">😊</div>
+        <div class="status-text" id="statusLabel">Напиши что-нибудь</div>
     </div>
 
-    <div class="heard-section">
-        <div class="label">🎤 Вы сказали:</div>
-        <div class="transcript-text" id="userSpeech">—</div>
+    <!-- Чат -->
+    <div class="chat-container" id="chatContainer">
+        <div class="message bot-message">
+            <div class="message-avatar">🤖</div>
+            <div class="message-bubble">
+                Привет! Я Groq Эмоджи 🤗<br>
+                Задавай любые вопросы, я отвечаю быстро и с душой!
+            </div>
+        </div>
     </div>
 
-    <div class="answer-section">
-        <div class="label">⚡ Groq Эмоджи отвечает:</div>
-        <div class="bot-message" id="botAnswer">Нажми на кнопку и скажи что-нибудь</div>
-    </div>
-
-    <div class="button-group">
-        <button class="btn btn-primary" id="startBtn">🎙️ Начать диалог</button>
-        <button class="btn btn-secondary" id="stopBtn">⏹️ Остановить</button>
+    <!-- Поле ввода -->
+    <div class="input-area">
+        <textarea id="messageInput" class="message-input" placeholder="Напиши сообщение... (Enter для отправки, Shift+Enter для новой строки)" rows="1"></textarea>
+        <button id="sendBtn" class="send-btn" title="Отправить">📤</button>
+        <button id="clearBtn" class="clear-btn" title="Очистить чат">🗑️</button>
     </div>
     <div class="shortcut-hint">
-        💡 <kbd>Пробел</kbd> — удерживай, чтобы поговорить (как рация)<br>
-        🧠 Работает на <strong>Groq Llama 3.1 70B</strong> — скорость ответа &lt; 1 секунда!<br>
-        🔥 Абсолютно бесплатно, без ограничений для обычного использования
+        💡 <kbd>Enter</kbd> — отправить &nbsp;&nbsp;|&nbsp;&nbsp;
+        <kbd>Shift</kbd> + <kbd>Enter</kbd> — новая строка &nbsp;&nbsp;|&nbsp;&nbsp;
+        ✨ ИИ отвечает за &lt; 1 секунду
     </div>
 </div>
 
 <script>
     // ==================================================================
-    // GROQ API КОНФИГУРАЦИЯ
+    // GROQ API КОНФИГУРАЦИЯ (твой ключ)
     // ==================================================================
     const GROQ_API_KEY = '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';
     const GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions';
@@ -265,16 +302,13 @@
     // DOM элементы
     const emojiEl = document.getElementById('emojiMain');
     const statusSpan = document.getElementById('statusLabel');
-    const userSpeechDiv = document.getElementById('userSpeech');
-    const botAnswerDiv = document.getElementById('botAnswer');
-    const startBtn = document.getElementById('startBtn');
-    const stopBtn = document.getElementById('stopBtn');
+    const chatContainer = document.getElementById('chatContainer');
+    const messageInput = document.getElementById('messageInput');
+    const sendBtn = document.getElementById('sendBtn');
+    const clearBtn = document.getElementById('clearBtn');
 
-    // Состояния
-    let isListening = false;
-    let recognition = null;
-    let currentUtterance = null;
     let isProcessing = false;
+    let currentTypingIndicator = null;
 
     // ==================================================================
     // UI ФУНКЦИИ
@@ -284,26 +318,67 @@
         statusSpan.innerText = statusText;
     }
 
-    function setUserTranscript(text) {
-        if (!text || text.trim() === "") {
-            userSpeechDiv.innerHTML = "—";
-            return;
-        }
-        userSpeechDiv.innerHTML = `“ ${text} ”`;
+    function addMessage(text, isUser) {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `message ${isUser ? 'user-message' : 'bot-message'}`;
+        
+        const avatar = document.createElement('div');
+        avatar.className = 'message-avatar';
+        avatar.innerText = isUser ? '👤' : '🤖';
+        
+        const bubble = document.createElement('div');
+        bubble.className = 'message-bubble';
+        bubble.innerHTML = text.replace(/\n/g, '<br>');
+        
+        messageDiv.appendChild(avatar);
+        messageDiv.appendChild(bubble);
+        
+        chatContainer.appendChild(messageDiv);
+        
+        // Прокрутка вниз
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+        
+        return messageDiv;
     }
 
-    function setBotMessage(text, isLoading = false) {
-        if (isLoading) {
-            botAnswerDiv.innerHTML = '<span class="thinking-dots">🤔 Думаю<span>.</span><span>.</span><span>.</span></span>';
+    function showTypingIndicator() {
+        // Удаляем предыдущий индикатор
+        if (currentTypingIndicator) {
+            currentTypingIndicator.remove();
+        }
+        
+        const tempDiv = document.createElement('div');
+        tempDiv.className = 'message bot-message';
+        tempDiv.innerHTML = `
+            <div class="message-avatar">🤖</div>
+            <div class="message-bubble typing-indicator">
+                <span></span><span></span><span></span>
+            </div>
+        `;
+        chatContainer.appendChild(tempDiv);
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+        currentTypingIndicator = tempDiv;
+    }
+
+    function hideTypingIndicator() {
+        if (currentTypingIndicator) {
+            currentTypingIndicator.remove();
+            currentTypingIndicator = null;
+        }
+    }
+
+    function updateEmojiByStatus() {
+        if (isProcessing) {
+            setEmoji('🤔', 'Думаю над ответом...');
         } else {
-            botAnswerDiv.innerHTML = text;
+            setEmoji('😊', 'Готов к диалогу!');
         }
     }
 
     // ==================================================================
-    // GROQ API ВЫЗОВ (супер быстрый!)
+    // GROQ API ВЫЗОВ
     // ==================================================================
-    async function callGroqAPI(userMessage) {
+    async function callGroqAPI(userMessage, chatHistory) {
         try {
             const response = await fetch(GROQ_API_URL, {
                 method: 'POST',
@@ -312,25 +387,25 @@
                     'Authorization': `Bearer ${GROQ_API_KEY}`
                 },
                 body: JSON.stringify({
-                    model: 'llama-3.1-70b-versatile',  // Модель Llama 3.1 70B
+                    model: 'llama-3.1-70b-versatile',
                     messages: [
                         {
                             role: 'system',
                             content: `Ты - дружелюбный весёлый эмоджи-ассистент. 
-                            Твоя задача: общаться кратко, позитивно, с юмором и обязательно использовать эмодзи.
-                            Отвечай на русском языке, максимум 2-3 предложения.
+                            Твоя задача: общаться позитивно, с юмором и обязательно использовать эмодзи.
+                            Отвечай на русском языке, кратко и по делу (2-4 предложения).
                             Твой характер: милый, заботливый, энергичный собеседник.
                             Если тебя спрашивают о делах - отвечай, что у тебя всё отлично.
-                            Всегда будь доброжелательным и помогай пользователю.`
+                            Всегда будь доброжелательным.`
                         },
+                        ...chatHistory,
                         {
                             role: 'user',
                             content: userMessage
                         }
                     ],
-                    max_tokens: 150,
-                    temperature: 0.85,
-                    top_p: 0.9
+                    max_tokens: 200,
+                    temperature: 0.85
                 })
             });
 
@@ -341,243 +416,134 @@
                 if (response.status === 401) {
                     return "🔑 Ошибка: неверный API ключ Groq. Проверь ключ!";
                 } else if (response.status === 429) {
-                    return "⚡ Слишком много запросов! Подожди секундочку и попробуй снова. Groq быстрый, но тоже отдыхает иногда 😅";
+                    return "⚡ Слишком много запросов! Подожди пару секунд 😅";
                 }
-                return `🤔 Ошибка: ${response.status}. Попробуй ещё раз.`;
+                return `🤔 Ошибка ${response.status}. Попробуй ещё раз.`;
             }
 
             const data = await response.json();
-            const reply = data.choices[0].message.content;
-            return reply;
+            return data.choices[0].message.content;
 
         } catch (error) {
             console.error('Network error:', error);
-            return "🌐 Ошибка сети. Проверь интернет-соединение и попробуй снова!";
+            return "🌐 Ошибка сети. Проверь интернет-соединение!";
         }
     }
 
     // ==================================================================
-    // ОЗВУЧИВАНИЕ ОТВЕТА (Text-to-Speech)
+    // ОТПРАВКА СООБЩЕНИЯ
     // ==================================================================
-    function speakText(text) {
-        // Останавливаем предыдущую речь
-        if (window.speechSynthesis.speaking || window.speechSynthesis.pending) {
-            window.speechSynthesis.cancel();
-        }
+    async function sendMessage() {
+        const userText = messageInput.value.trim();
         
-        const utterance = new SpeechSynthesisUtterance(text);
-        utterance.lang = 'ru-RU';
-        utterance.rate = 0.95;
-        utterance.pitch = 1.08;
-        
-        utterance.onstart = () => {
-            setEmoji('🗣️', 'Отвечаю...');
-        };
-        
-        utterance.onend = () => {
-            if (!isListening && !isProcessing) {
-                setEmoji('😊', 'Готов к диалогу! Нажми на кнопку');
-            } else if (isListening) {
-                setEmoji('🎤', 'Слушаю...');
-            }
-        };
-        
-        utterance.onerror = () => {
-            setEmoji('😅', 'Ошибка озвучки');
-        };
-        
-        window.speechSynthesis.speak(utterance);
-        currentUtterance = utterance;
-    }
-
-    // ==================================================================
-    // ОСНОВНАЯ ОБРАБОТКА (голос -> Groq -> ответ)
-    // ==================================================================
-    async function processWithGroq(userText) {
-        if (!userText || userText.trim() === "") {
-            setBotMessage("Не расслышал речь, попробуй ещё раз громче! 🎤");
-            setEmoji('😕', 'Не расслышал');
+        if (!userText) return;
+        if (isProcessing) {
+            addMessage("⏳ Подожди, я ещё отвечаю на предыдущий вопрос!", false);
             return;
         }
-
-        setUserTranscript(userText);
-        setEmoji('🤔', 'Спрашиваю Groq... (менее 1 секунды)');
-        setBotMessage('', true);
+        
+        // Очищаем поле ввода
+        messageInput.value = '';
+        messageInput.style.height = 'auto';
+        
+        // Показываем сообщение пользователя
+        addMessage(userText, true);
+        
+        // Показываем индикатор печати
+        showTypingIndicator();
         isProcessing = true;
-
+        updateEmojiByStatus();
+        
+        // Собираем историю чата для контекста (последние 6 сообщений)
+        const messages = [];
+        const chatMessages = chatContainer.querySelectorAll('.message');
+        // Пропускаем последний добавленный индикатор и системные сообщения
+        const lastMessages = Array.from(chatMessages).slice(-10);
+        for (const msg of lastMessages) {
+            const bubble = msg.querySelector('.message-bubble');
+            if (!bubble || bubble.classList.contains('typing-indicator')) continue;
+            
+            const isUserMsg = msg.classList.contains('user-message');
+            const text = bubble.innerText;
+            
+            if (isUserMsg) {
+                messages.push({ role: 'user', content: text });
+            } else {
+                messages.push({ role: 'assistant', content: text });
+            }
+        }
+        // Оставляем только последние 6 для контекста
+        const shortHistory = messages.slice(-6);
+        
         try {
-            const aiReply = await callGroqAPI(userText);
-            setBotMessage(aiReply);
-            speakText(aiReply);
+            const aiReply = await callGroqAPI(userText, shortHistory);
+            hideTypingIndicator();
+            addMessage(aiReply, false);
         } catch (error) {
-            console.error(error);
-            setBotMessage("😵 Упс! Что-то пошло не так. Попробуй ещё раз!");
-            setEmoji('😫', 'Ошибка');
+            hideTypingIndicator();
+            addMessage("😵 Упс! Что-то пошло не так. Попробуй ещё раз!", false);
         } finally {
             isProcessing = false;
+            updateEmojiByStatus();
+            // Фокусируемся на поле ввода
+            messageInput.focus();
         }
     }
 
     // ==================================================================
-    // РАСПОЗНАВАНИЕ РЕЧИ (Web Speech API)
+    // ОЧИСТКА ЧАТА
     // ==================================================================
-    function initSpeechRecognition() {
-        const SpeechRecognitionAPI = window.SpeechRecognition || window.webkitSpeechRecognition;
+    function clearChat() {
+        // Оставляем только приветственное сообщение от бота
+        chatContainer.innerHTML = '';
+        const welcomeMsg = document.createElement('div');
+        welcomeMsg.className = 'message bot-message';
+        welcomeMsg.innerHTML = `
+            <div class="message-avatar">🤖</div>
+            <div class="message-bubble">
+                Чат очищен! 👋<br>
+                Задавай любые вопросы, я готов помочь!
+            </div>
+        `;
+        chatContainer.appendChild(welcomeMsg);
         
-        if (!SpeechRecognitionAPI) {
-            setEmoji('💀', 'Браузер не поддерживает голос');
-            statusSpan.innerText = '❌ Используй Chrome, Edge или Safari';
-            startBtn.disabled = true;
-            return null;
+        if (currentTypingIndicator) {
+            currentTypingIndicator.remove();
+            currentTypingIndicator = null;
         }
-        
-        const recog = new SpeechRecognitionAPI();
-        recog.continuous = false;
-        recog.interimResults = false;
-        recog.lang = 'ru-RU';
-        recog.maxAlternatives = 1;
-        
-        recog.onstart = () => {
-            isListening = true;
-            setEmoji('🎤', '🎙️ Слушаю... Говори чётко!');
-            setUserTranscript("...");
-        };
-        
-        recog.onresult = async (event) => {
-            const last = event.results.length - 1;
-            const transcript = event.results[last][0].transcript;
-            console.log("🎤 Распознано:", transcript);
-            
-            if (recog) recog.stop();
-            
-            // Отправляем в Groq
-            await processWithGroq(transcript);
-        };
-        
-        recog.onerror = (event) => {
-            console.warn("Ошибка распознавания:", event.error);
-            isListening = false;
-            
-            switch(event.error) {
-                case 'no-speech':
-                    setEmoji('😶', 'Ничего не услышал');
-                    setBotMessage("Не услышал речи. Нажми кнопку и скажи что-нибудь! 🎤");
-                    break;
-                case 'not-allowed':
-                    setEmoji('🔇', 'Нет доступа к микрофону');
-                    setBotMessage("🔴 Разреши доступ к микрофону в браузере и попробуй снова!");
-                    break;
-                default:
-                    setEmoji('⚠️', 'Ошибка');
-                    setBotMessage("⚠️ Ошибка распознавания. Попробуй ещё раз.");
-            }
-            
-            setTimeout(() => {
-                if (!isListening && !isProcessing) {
-                    setEmoji('😊', 'Нажми на кнопку или пробел');
-                }
-            }, 1500);
-        };
-        
-        recog.onend = () => {
-            isListening = false;
-            if (!window.speechSynthesis.speaking && !isProcessing) {
-                setEmoji('😊', 'Готов! Нажми на кнопку');
-            }
-        };
-        
-        return recog;
+        isProcessing = false;
+        updateEmojiByStatus();
+        messageInput.focus();
     }
-    
-    // Создаём распознаватель
-    let recognition = initSpeechRecognition();
-    
+
     // ==================================================================
-    // УПРАВЛЕНИЕ ЗАПИСЬЮ
+    // АВТОРАСШИРЕНИЕ TEXTAREA
     // ==================================================================
-    function startListening() {
-        if (!recognition) {
-            alert("❌ Ваш браузер не поддерживает голосовое управление.\nИспользуйте Chrome, Edge или Safari.");
-            return;
-        }
-        
-        // Останавливаем речь, если она играет
-        if (window.speechSynthesis.speaking || window.speechSynthesis.pending) {
-            window.speechSynthesis.cancel();
-        }
-        
-        if (isListening) {
-            try { recognition.stop(); } catch(e) {}
-        }
-        
-        try {
-            recognition.start();
-        } catch (err) {
-            console.error("Ошибка запуска:", err);
-            recognition = initSpeechRecognition();
-            if(recognition) {
-                setTimeout(() => recognition.start(), 100);
-            }
-        }
+    function autoResizeTextarea() {
+        messageInput.style.height = 'auto';
+        messageInput.style.height = Math.min(messageInput.scrollHeight, 120) + 'px';
     }
-    
-    function stopListening() {
-        if (recognition && isListening) {
-            try { recognition.stop(); } catch(e) {}
-        }
-        isListening = false;
-        if (!isProcessing) {
-            setEmoji('😴', 'Режим ожидания');
-        }
-    }
-    
+
     // ==================================================================
     // ОБРАБОТЧИКИ СОБЫТИЙ
     // ==================================================================
-    startBtn.addEventListener('click', startListening);
-    stopBtn.addEventListener('click', stopListening);
-    emojiEl.addEventListener('click', startListening);
+    sendBtn.addEventListener('click', sendMessage);
+    clearBtn.addEventListener('click', clearChat);
     
-    // Горячая клавиша ПРОБЕЛ (push-to-talk)
-    let spacePressed = false;
-    let spaceTimeout = null;
+    messageInput.addEventListener('input', autoResizeTextarea);
     
-    window.addEventListener('keydown', (event) => {
-        if (event.code === 'Space' && !spacePressed) {
-            event.preventDefault();
-            spacePressed = true;
-            startListening();
-            
-            if (spaceTimeout) clearTimeout(spaceTimeout);
-            spaceTimeout = setTimeout(() => {
-                if (spacePressed) {
-                    spacePressed = false;
-                    stopListening();
-                }
-            }, 15000); // максимум 15 секунд записи
+    messageInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            sendMessage();
         }
     });
     
-    window.addEventListener('keyup', (event) => {
-        if (event.code === 'Space') {
-            event.preventDefault();
-            spacePressed = false;
-            if (spaceTimeout) clearTimeout(spaceTimeout);
-            
-            if (isListening) {
-                try { if(recognition) recognition.stop(); } catch(e) {}
-            }
-            stopListening();
-        }
-    });
+    // Фокус на поле ввода при загрузке
+    messageInput.focus();
     
-    // ==================================================================
-    // ПРИВЕТСТВИЕ
-    // ==================================================================
-    setTimeout(() => {
-        setBotMessage("⚡ Привет! Я Groq Эмоджи. Я отвечаю молниеносно! Нажми на кнопку или зажми ПРОБЕЛ и скажи что угодно. Попробуй спросить меня о чём-нибудь! 🚀");
-        speakText("Привет! Я Грок Эмоджи. Нажми на кнопку и скажи что-нибудь!");
-    }, 800);
+    // Приветственное сообщение с эмодзи
+    setEmoji('😊', 'Напиши что-нибудь');
 </script>
 </body>
 </html>
