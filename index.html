@@ -15,7 +15,7 @@ button,input,textarea{font:inherit}button{cursor:pointer}
 .bgblob{position:fixed;border-radius:50%;filter:blur(5px);pointer-events:none;z-index:-1}.blob1{width:280px;height:280px;left:-120px;top:24%;background:#f0b9d055}.blob2{width:360px;height:360px;right:-180px;top:60%;background:#d8b2df44}
 header{position:sticky;top:0;z-index:10;padding:12px 18px;background:color-mix(in srgb,var(--bg) 72%,transparent);backdrop-filter:blur(22px);border-bottom:1px solid color-mix(in srgb,var(--line) 65%,transparent)}
 .nav{max-width:1120px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:12px}.brand{font-weight:800;letter-spacing:-.04em;color:var(--rose);white-space:nowrap}.navlinks{display:flex;gap:18px;align-items:center;overflow:auto;scrollbar-width:none}.navlinks a{font-size:12px;color:var(--muted);text-decoration:none;white-space:nowrap}.navlinks a:hover{color:var(--rose)}.iconbtn{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--paper);color:var(--rose);font-size:17px;flex:none;transition:.2s}.iconbtn:hover{transform:scale(1.1)}
-main{max-width:1120px;margin:auto;padding:28px 20px 70px}.hero{min-height:670px;display:grid;place-items:center;text-align:center;position:relative;padding:65px 20px 85px}.hero-inner{max-width:760px}.kicker{font-size:11px;text-transform:uppercase;letter-spacing:.24em;color:var(--rose);font-weight:750}.hero h1{font-size:clamp(58px,11vw,120px);line-height:.88;letter-spacing:-.085em;margin:25px 0 20px;font-weight:850;user-select:none}.hero h1 span{display:block;font-family:Georgia,serif;font-style:italic;font-weight:400;color:var(--rose);letter-spacing:-.07em}.hero p{max-width:520px;margin:0 auto;color:var(--muted);font-size:17px;line-height:1.75}.hero-heart{width:130px;height:130px;margin:32px auto 27px;border-radius:42% 58% 55% 45%;display:grid;place-items:center;background:linear-gradient(145deg,#fff,#f0c6d9);box-shadow:0 20px 55px #c47d9d44;transform:rotate(-8deg);animation:float 5s ease-in-out infinite}.hero-heart span{font-size:65px;color:#bd6e91;transform:rotate(8deg);filter:drop-shadow(0 7px 8px #9c547744)}@keyframes float{50%{transform:translateY(-13px) rotate(4deg)}}
+main{max-width:1120px;margin:auto;padding:28px 20px 70px;position:relative;z-index:1}.hero{min-height:670px;display:grid;place-items:center;text-align:center;position:relative;padding:65px 20px 85px}.hero-inner{max-width:760px}.kicker{font-size:11px;text-transform:uppercase;letter-spacing:.24em;color:var(--rose);font-weight:750}.hero h1{font-size:clamp(58px,11vw,120px);line-height:.88;letter-spacing:-.085em;margin:25px 0 20px;font-weight:850;user-select:none}.hero h1 span{display:block;font-family:Georgia,serif;font-style:italic;font-weight:400;color:var(--rose);letter-spacing:-.07em}.hero p{max-width:520px;margin:0 auto;color:var(--muted);font-size:17px;line-height:1.75}.hero-heart{width:130px;height:130px;margin:32px auto 27px;border-radius:42% 58% 55% 45%;display:grid;place-items:center;background:linear-gradient(145deg,#fff,#f0c6d9);box-shadow:0 20px 55px #c47d9d44;transform:rotate(-8deg);animation:float 5s ease-in-out infinite}.hero-heart span{font-size:65px;color:#bd6e91;transform:rotate(8deg);filter:drop-shadow(0 7px 8px #9c547744)}@keyframes float{50%{transform:translateY(-13px) rotate(4deg)}}
 .btn{border:0;border-radius:999px;padding:14px 22px;background:linear-gradient(135deg,#d98eae,#a95e83);color:white;font-weight:700;font-size:14px;box-shadow:0 10px 25px #b56f9140;transition:.2s}.btn:hover{transform:translateY(-2px);box-shadow:0 15px 32px #b56f9155}.btn.secondary{background:var(--paper);border:1px solid var(--line);color:var(--rose);box-shadow:none}.btn.small{padding:10px 15px;font-size:12px}.scrollhint{margin-top:38px;color:var(--muted);font-size:11px;letter-spacing:.13em}.scrollhint b{display:block;font-size:23px;margin-top:8px;animation:down 1.6s infinite}@keyframes down{50%{transform:translateY(6px)}}
 .section{margin:0 auto 90px}.section-head{text-align:center;margin-bottom:28px}.eyebrow{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--rose);font-weight:800}.section h2{font-size:clamp(32px,5vw,54px);letter-spacing:-.065em;line-height:1.03;margin:12px 0;color:var(--ink)}.section-head p{color:var(--muted);line-height:1.7;max-width:550px;margin:0 auto;font-size:14px}
 .glass{background:var(--paper);border:1px solid color-mix(in srgb,var(--line) 75%,white);border-radius:30px;box-shadow:var(--shadow);backdrop-filter:blur(20px)}
@@ -80,23 +80,41 @@ footer{text-align:center;padding:30px 10px;color:var(--muted);font-size:12px}foo
   box-shadow: 0 5px 15px rgba(168, 95, 131, 0.2);
 }
 
-/* СТИЛИ ДЛЯ СУБТИТРОВ */
+/* СТИЛИ ДЛЯ СУБТИТРОВ (НА ЗАДНЕМ ПЛАНЕ) */
 #lyricsOverlay {
   position: fixed;
   inset: 0;
-  z-index: 15;
+  z-index: -1; /* Уводим назад, чтобы не мешать контенту */
   pointer-events: none;
   display: none;
   align-items: center;
   justify-content: center;
-  background: radial-gradient(circle, rgba(40,20,30,0.4) 0%, rgba(20,10,15,0.7) 100%);
-  backdrop-filter: blur(2px);
-  transition: opacity 0.5s;
+  background: radial-gradient(circle, rgba(40,20,30,0.1) 0%, rgba(20,10,15,0.2) 100%); /* Очень прозрачный фон */
+  transition: opacity 0.8s;
 }
 #lyricsContainer {
   text-align: center;
-  max-width: 80%;
+  max-width: 90%;
   font-family: Georgia, serif;
+  padding: 0 20px;
+}
+/* Анимация для слов */
+.lyric-word {
+  display: inline-block;
+  font-size: clamp(28px, 6vw, 60px);
+  color: #a85f83;
+  text-shadow: 0 0 20px rgba(217, 137, 170, 0.9), 0 0 40px rgba(168, 95, 131, 0.6);
+  font-weight: bold;
+  opacity: 0;
+  transform: translateY(20px);
+  filter: blur(8px);
+  margin: 0 6px;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.lyric-word.show {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
 }
 </style>
 </head>
@@ -186,10 +204,10 @@ footer{text-align:center;padding:30px 10px;color:var(--muted);font-size:12px}foo
   <source src="1.mp3" type="audio/mpeg">
 </audio>
 
-<!-- Оверлей для субтитров -->
-<div id="lyricsOverlay" style="position:fixed;inset:0;z-index:15;pointer-events:none;display:none;align-items:center;justify-content:center;background:radial-gradient(circle, rgba(40,20,30,0.4) 0%, rgba(20,10,15,0.7) 100%);backdrop-filter:blur(2px);transition:opacity 0.5s;">
-  <div id="lyricsContainer" style="text-align:center;max-width:80%;font-family:Georgia, serif;">
-    <!-- Сюда будут вставляться строки -->
+<!-- Субтитры на фоне -->
+<div id="lyricsOverlay">
+  <div id="lyricsContainer">
+    <!-- Строки будут добавляться скриптом -->
   </div>
 </div>
 
@@ -454,25 +472,25 @@ const lyricsOverlay = $('#lyricsOverlay');
 const lyricsContainer = $('#lyricsContainer');
 
 // Текст песни You Are My Destiny (Paul Anka)
-// Первая строчка начинается ровно на 12-й секунде (как ты просил)
+// Слова начинаются ровно на 12-й секунде. Задержки между строками увеличены.
 const songLyrics = [
-  { time: 12.0, text: "You are my destiny" },
-  { time: 15.5, text: "That's what you are to me" },
-  { time: 19.0, text: "You are my happiness" },
-  { time: 22.5, text: "That's what you are" },
-  { time: 26.0, text: "You have my sweet caress" },
-  { time: 29.5, text: "You share my loneliness" },
-  { time: 33.0, text: "You are my dream come true" },
-  { time: 36.5, text: "That's what you are" },
-  { time: 40.5, text: "Heaven and heaven alone" },
-  { time: 44.5, text: "Can take your love from me" },
-  { time: 48.5, text: "'Cause I'd be a fool" },
-  { time: 52.0, text: "To leave you, dear" },
-  { time: 55.5, text: "And a fool I'd never be" },
-  { time: 59.5, text: "You are my destiny" },
-  { time: 63.5, text: "You share my reverie" },
-  { time: 67.5, text: "You're more than life to me" },
-  { time: 71.5, text: "That's what you are" }
+  { time: 12.0, words: ["You", "are", "my", "destiny"] },
+  { time: 16.0, words: ["That's", "what", "you", "are", "to", "me"] },
+  { time: 20.0, words: ["You", "are", "my", "happiness"] },
+  { time: 24.0, words: ["That's", "what", "you", "are"] },
+  { time: 28.0, words: ["You", "have", "my", "sweet", "caress"] },
+  { time: 32.0, words: ["You", "share", "my", "loneliness"] },
+  { time: 36.0, words: ["You", "are", "my", "dream", "come", "true"] },
+  { time: 40.0, words: ["That's", "what", "you", "are"] },
+  { time: 44.0, words: ["Heaven", "and", "heaven", "alone"] },
+  { time: 48.0, words: ["Can", "take", "your", "love", "from", "me"] },
+  { time: 52.0, words: ["'Cause", "I'd", "be", "a", "fool"] },
+  { time: 56.0, words: ["To", "leave", "you,", "dear"] },
+  { time: 60.0, words: ["And", "a", "fool", "I'd", "never", "be"] },
+  { time: 64.0, words: ["You", "are", "my", "destiny"] },
+  { time: 68.0, words: ["You", "share", "my", "reverie"] },
+  { time: 72.0, words: ["You're", "more", "than", "life", "to", "me"] },
+  { time: 76.0, words: ["That's", "what", "you", "are"] }
 ];
 
 let lyricTimeouts = [];
@@ -486,39 +504,32 @@ function resetLyrics() {
 function showLyricLine(index) {
   if (index >= songLyrics.length) return;
   
+  // Очищаем контейнер перед новой строкой
+  lyricsContainer.innerHTML = '';
+  
   const line = songLyrics[index];
-  const el = document.createElement('div');
-  el.textContent = line.text;
-  el.style.cssText = `
-    font-size: clamp(24px, 5vw, 48px);
-    color: #fff0f6;
-    text-shadow: 0 0 20px rgba(217, 137, 170, 0.8), 0 0 40px rgba(168, 95, 131, 0.5);
-    opacity: 0;
-    transform: translateY(30px) scale(0.95);
-    filter: blur(4px);
-    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
-    margin-bottom: 20px;
-    line-height: 1.4;
-    font-style: italic;
-  `;
+  const lineWrapper = document.createElement('div');
+  lineWrapper.style.display = 'flex';
+  lineWrapper.style.flexWrap = 'wrap';
+  lineWrapper.style.justifyContent = 'center';
+  lineWrapper.style.alignItems = 'center';
   
-  lyricsContainer.appendChild(el);
-  
-  requestAnimationFrame(() => {
-    el.style.opacity = '1';
-    el.style.transform = 'translateY(0) scale(1)';
-    el.style.filter = 'blur(0)';
+  line.words.forEach((word, i) => {
+    const wordEl = document.createElement('span');
+    wordEl.className = 'lyric-word';
+    wordEl.textContent = word;
+    
+    // Каждое слово появляется с задержкой (караоке-эффект)
+    const wordDelay = i * 150; // 150 мс между словами
+    const t = setTimeout(() => {
+      wordEl.classList.add('show');
+    }, wordDelay);
+    lyricTimeouts.push(t);
+    
+    lineWrapper.appendChild(wordEl);
   });
   
-  // Удаляем предыдущие строки, чтобы не было каши
-  const allLines = lyricsContainer.children;
-  if (allLines.length > 1) {
-    const prev = allLines[0];
-    prev.style.opacity = '0';
-    prev.style.transform = 'translateY(-20px) scale(0.95)';
-    prev.style.filter = 'blur(4px)';
-    setTimeout(() => prev.remove(), 1000);
-  }
+  lyricsContainer.appendChild(lineWrapper);
 }
 
 function startLyrics() {
