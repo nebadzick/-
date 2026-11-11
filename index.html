@@ -89,7 +89,7 @@ footer{text-align:center;padding:30px 10px;color:var(--muted);font-size:12px}foo
   display: none;
   align-items: center;
   justify-content: center;
-  background: radial-gradient(circle, rgba(40,20,30,0.1) 0%, rgba(20,10,15,0.2) 100%); /* Очень прозрачный фон */
+  background: radial-gradient(circle, rgba(40,20,30,0.1) 0%, rgba(20,10,15,0.2) 100%);
   transition: opacity 0.8s;
 }
 #lyricsContainer {
@@ -472,25 +472,25 @@ const lyricsOverlay = $('#lyricsOverlay');
 const lyricsContainer = $('#lyricsContainer');
 
 // Текст песни You Are My Destiny (Paul Anka)
-// Слова начинаются ровно на 12-й секунде. Задержки между строками увеличены.
+// Тайминги подобраны так, чтобы каждая строка висела ~8 секунд
 const songLyrics = [
   { time: 12.0, words: ["You", "are", "my", "destiny"] },
-  { time: 16.0, words: ["That's", "what", "you", "are", "to", "me"] },
-  { time: 20.0, words: ["You", "are", "my", "happiness"] },
-  { time: 24.0, words: ["That's", "what", "you", "are"] },
-  { time: 28.0, words: ["You", "have", "my", "sweet", "caress"] },
-  { time: 32.0, words: ["You", "share", "my", "loneliness"] },
-  { time: 36.0, words: ["You", "are", "my", "dream", "come", "true"] },
-  { time: 40.0, words: ["That's", "what", "you", "are"] },
-  { time: 44.0, words: ["Heaven", "and", "heaven", "alone"] },
-  { time: 48.0, words: ["Can", "take", "your", "love", "from", "me"] },
-  { time: 52.0, words: ["'Cause", "I'd", "be", "a", "fool"] },
-  { time: 56.0, words: ["To", "leave", "you,", "dear"] },
-  { time: 60.0, words: ["And", "a", "fool", "I'd", "never", "be"] },
-  { time: 64.0, words: ["You", "are", "my", "destiny"] },
-  { time: 68.0, words: ["You", "share", "my", "reverie"] },
-  { time: 72.0, words: ["You're", "more", "than", "life", "to", "me"] },
-  { time: 76.0, words: ["That's", "what", "you", "are"] }
+  { time: 20.0, words: ["That's", "what", "you", "are", "to", "me"] },
+  { time: 28.0, words: ["You", "are", "my", "happiness"] },
+  { time: 36.0, words: ["That's", "what", "you", "are"] },
+  { time: 44.0, words: ["You", "have", "my", "sweet", "caress"] },
+  { time: 52.0, words: ["You", "share", "my", "loneliness"] },
+  { time: 60.0, words: ["You", "are", "my", "dream", "come", "true"] },
+  { time: 68.0, words: ["That's", "what", "you", "are"] },
+  { time: 76.0, words: ["Heaven", "and", "heaven", "alone"] },
+  { time: 84.0, words: ["Can", "take", "your", "love", "from", "me"] },
+  { time: 92.0, words: ["'Cause", "I'd", "be", "a", "fool"] },
+  { time: 100.0, words: ["To", "leave", "you,", "dear"] },
+  { time: 108.0, words: ["And", "a", "fool", "I'd", "never", "be"] },
+  { time: 116.0, words: ["You", "are", "my", "destiny"] },
+  { time: 124.0, words: ["You", "share", "my", "reverie"] },
+  { time: 132.0, words: ["You're", "more", "than", "life", "to", "me"] },
+  { time: 140.0, words: ["That's", "what", "you", "are"] }
 ];
 
 let lyricTimeouts = [];
@@ -520,7 +520,7 @@ function showLyricLine(index) {
     wordEl.textContent = word;
     
     // Каждое слово появляется с задержкой (караоке-эффект)
-    const wordDelay = i * 150; // 150 мс между словами
+    const wordDelay = i * 300; // 300 мс между словами
     const t = setTimeout(() => {
       wordEl.classList.add('show');
     }, wordDelay);
