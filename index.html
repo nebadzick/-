@@ -104,7 +104,6 @@ footer{text-align:center;padding:30px 10px;color:var(--muted);font-size:12px}foo
 <section class="section" id="story"><div class="section-head"><div class="eyebrow">03 · наша история</div><h2>И пусть это только начало</h2><p>Здесь можно записать ваши даты, первые моменты и маленькие события. Изменения видят все!</p></div>
 <div class="timeline" id="timeline"></div><div class="toolbar"><button class="btn secondary" id="addEvent">＋ Добавить воспоминание</button></div></section>
 
-<!-- СЕКЦИЯ ПРИЧИН -->
 <section class="section" id="reasons">
   <div class="section-head">
     <div class="eyebrow">04 · бесконечный список</div>
@@ -123,7 +122,6 @@ footer{text-align:center;padding:30px 10px;color:var(--muted);font-size:12px}foo
   </div>
   
   <div class="extra-reasons" id="extraReasons"></div>
-
   <button class="reveal-btn" id="revealBtn">Показать ещё 10 причин ♡</button>
 </section>
 
@@ -164,8 +162,9 @@ footer{text-align:center;padding:30px 10px;color:var(--muted);font-size:12px}foo
 <footer><strong>Для Ксюши. С любовью.</strong>Сделано не потому, что был повод. А потому, что ты есть.<br><br><a href="#top" style="color:var(--rose);text-decoration:none">Наверх ↑</a></footer>
 </main><div class="toast" id="toast">Сохранено ♡</div>
 
+<!-- Фоновая музыка: файл 1.mp3 лежит в папке с сайтом -->
 <audio id="bgMusic" loop>
-  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=piano-moment-11011.mp3" type="audio/mpeg">
+  <source src="1.mp3" type="audio/mpeg">
 </audio>
 
 <script>
@@ -424,8 +423,13 @@ $('#kissBtn').onclick = async () => {
 const music = $('#bgMusic');
 let musicPlaying = false;
 $('#musicBtn').onclick = () => {
-  if (musicPlaying) { music.pause(); $('#musicBtn').textContent = '🎵'; }
-  else { music.play(); $('#musicBtn').textContent = '🔇'; }
+  if (musicPlaying) { 
+    music.pause(); 
+    $('#musicBtn').textContent = '🎵'; 
+  } else { 
+    music.play().catch(e => toast('Не удалось запустить музыку. Проверь файл 1.mp3')); 
+    $('#musicBtn').textContent = '🔇'; 
+  }
   musicPlaying = !musicPlaying;
 };
 
@@ -550,35 +554,33 @@ const revealBtn = $('#revealBtn');
 const extraReasonsBox = $('#extraReasons');
 const baseCount = 8;
 
-revealBtn.onclick = () => {
-  // Добавляем по 10 штук
+function showMoreReasons() {
   const nextBatch = allExtraReasons.slice(revealedCount, revealedCount + 10);
   
   nextBatch.forEach((text, i) => {
     const div = document.createElement('div');
     div.className = 'glass reason';
     div.innerHTML = `<b>♡</b><span>${text}</span>`;
-    div.style.animationDelay = `${i * 0.05}s`; // Каскадная анимация
+    div.style.animationDelay = `${i * 0.05}s`;
     extraReasonsBox.appendChild(div);
   });
 
   revealedCount += 10;
 
-  // Проверяем, не открыли ли мы уже 100 (с учетом 8 базовых = 108)
   if (baseCount + revealedCount >= 100) {
     revealBtn.textContent = 'Спрятать причины ♡';
-    revealBtn.onclick = () => {
-      extraReasonsBox.innerHTML = '';
-      revealedCount = 0;
-      revealBtn.textContent = 'Показать ещё 10 причин ♡';
-      revealBtn.onclick = openReasons; // Возвращаем функцию открытия
-    };
+    revealBtn.onclick = hideReasons;
   }
-};
+}
 
-// Для правильной привязки функции
-const openReasons = revealBtn.onclick;
-revealBtn.onclick = openReasons;
+function hideReasons() {
+  extraReasonsBox.innerHTML = '';
+  revealedCount = 0;
+  revealBtn.textContent = 'Показать ещё 10 причин ♡';
+  revealBtn.onclick = showMoreReasons;
+}
+
+revealBtn.onclick = showMoreReasons;
 
 /* СТАРТ */
 renderGallery();
