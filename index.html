@@ -166,10 +166,8 @@ footer{text-align:center;padding:30px 10px;color:var(--muted);font-size:12px}foo
 <audio id="bgMusic" loop>
   <source src="1.mp3" type="audio/mpeg">
 </audio>
+
 <script>
-  // Устанавливаем тихую громкость (0.15 = 15% от максимума)
-  document.getElementById('bgMusic').volume = 0.15;
-</script>
 const $=s=>document.querySelector(s);
 
 /* ============================================================
@@ -423,6 +421,7 @@ $('#kissBtn').onclick = async () => {
    ФИШКИ
    ============================================================ */
 const music = $('#bgMusic');
+music.volume = 0.15; // Тихо на фоне
 let musicPlaying = false;
 $('#musicBtn').onclick = () => {
   if (musicPlaying) { 
