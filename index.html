@@ -2,139 +2,187 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#f8eaf0">
-<title>Для Ксюши ♡</title>
+<title>Ксюша — моя любимая история ♡</title>
 <style>
-:root{--pink:#f4a9c4;--deep:#9b5474;--ink:#4b3441;--glass:rgba(255,255,255,.58)}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;min-height:100vh;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;background:radial-gradient(ellipse at 15% 10%,#fff7fa 0,transparent 36%),radial-gradient(ellipse at 90% 20%,#f4c8d9 0,transparent 35%),linear-gradient(145deg,#f9e9ef,#e8d9ed 55%,#f8e5eb);overflow-x:hidden}
-body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.2;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.16'/%3E%3C/svg%3E")}
-.ambient{position:fixed;border-radius:50%;filter:blur(2px);pointer-events:none;animation:float 9s ease-in-out infinite}
-.a1{width:190px;height:190px;background:#fff8;top:10%;left:-75px}.a2{width:260px;height:260px;background:#eaa9c655;right:-110px;bottom:8%;animation-delay:-4s}
-@keyframes float{50%{transform:translateY(-24px) translateX(12px)}}
-main{width:min(100% - 30px,760px);margin:0 auto;padding:28px 0 60px;position:relative}
-.status{display:flex;justify-content:space-between;align-items:center;padding:4px 10px 18px;font-size:13px;font-weight:650;letter-spacing:.02em;color:#765a6a}
-.status .icons{display:flex;gap:7px;align-items:center}
-.phone{border:1px solid #ffffffb8;background:var(--glass);backdrop-filter:blur(25px);-webkit-backdrop-filter:blur(25px);border-radius:38px;box-shadow:0 28px 80px #8d547326, inset 0 1px #ffffffd9;overflow:hidden}
-.hero{padding:42px 26px 30px;text-align:center;position:relative}
-.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.22em;color:#a36b86;font-weight:700}
-h1{font-size:clamp(42px,10vw,70px);line-height:.98;letter-spacing:-.065em;margin:16px 0 12px;font-weight:760;color:#70475d}
-.subtitle{font-size:15px;line-height:1.6;color:#886b7b;margin:0 auto;max-width:390px}
-.orb{width:154px;height:154px;margin:28px auto 22px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 35% 25%,#fff 0,#f9dce8 42%,#e7a8c4 100%);box-shadow:0 14px 35px #c57c9c40,inset 0 3px 12px #fff9;position:relative}
-.orb:before,.orb:after{content:"";position:absolute;border:1px solid #fff9;border-radius:50%;inset:-10px;animation:pulse 3s ease-out infinite}
-.orb:after{inset:-20px;animation-delay:1.5s}
-@keyframes pulse{0%{transform:scale(.92);opacity:.8}100%{transform:scale(1.13);opacity:0}}
-.bigheart{font-size:66px;filter:drop-shadow(0 7px 8px #a64d7650);animation:heartbeat 2.2s ease-in-out infinite}
-@keyframes heartbeat{0%,100%{transform:scale(1)}12%{transform:scale(1.12)}22%{transform:scale(1)}32%{transform:scale(1.08)}42%{transform:scale(1)}}
-.btn{border:0;border-radius:999px;padding:15px 24px;background:linear-gradient(135deg,#c9799d,#a85e82);color:white;font:650 15px -apple-system,BlinkMacSystemFont,sans-serif;box-shadow:0 10px 24px #a85e8245;cursor:pointer;transition:transform .2s,box-shadow .2s}
-.btn:hover{transform:translateY(-2px);box-shadow:0 14px 28px #a85e8255}.btn:active{transform:scale(.98)}
-.hint{font-size:12px;color:#a17d90;margin-top:12px}
-.section{padding:0 22px 25px}
-.panel{background:#ffffff72;border:1px solid #ffffffb8;border-radius:25px;padding:23px 22px;margin:0 0 14px;box-shadow:0 8px 25px #8d54730c}
-.panel h2{font-size:19px;letter-spacing:-.03em;margin:0 0 12px;color:#754d62}
-.panel p{font-size:14px;line-height:1.8;margin:0;color:#806879}
-.note{font-size:16px!important;line-height:1.9!important;color:#68495a!important}
-.quote{font-family:Georgia,serif;font-style:italic;font-size:20px!important;line-height:1.55!important;color:#9a607d!important;text-align:center;padding:8px 4px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:16px}
-.tile{background:#fff9;border:1px solid #fff;border-radius:18px;padding:15px 8px;text-align:center;font-size:12px;color:#896b7a;line-height:1.45}
-.tile b{display:block;font-size:22px;margin-bottom:7px}
-.reveal{display:none;margin-top:14px;animation:appear .7s ease both}
-.reveal.show{display:block}
-@keyframes appear{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-.footer{text-align:center;padding:18px 15px 28px;color:#a17e91;font-size:12px}
-.footer strong{display:block;color:#87556f;font-size:15px;margin-bottom:6px}
-.heart-fall{position:fixed;top:-30px;z-index:5;pointer-events:none;animation:fall linear forwards;opacity:.8}
-@keyframes fall{to{transform:translateY(110vh) rotate(360deg);opacity:0}}
-.music{position:absolute;right:18px;top:18px;border:1px solid #fff;background:#ffffff80;color:#93627a;border-radius:50%;width:39px;height:39px;font-size:17px;cursor:pointer}
-.smallprint{font-size:11px;color:#ad8a9c;text-align:center;padding:0 20px 22px}
-@media(min-width:650px){main{padding-top:38px}.hero{padding-top:52px}.section{padding-left:34px;padding-right:34px}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}}
+:root{--bg:#f8edf2;--bg2:#f2e6f0;--paper:rgba(255,255,255,.68);--paper2:#fff9fc;--ink:#493443;--muted:#987c8c;--pink:#d989aa;--rose:#a85f83;--line:#eedce6;--shadow:0 22px 70px #95617b18}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:85px}
+body{margin:0;background:radial-gradient(ellipse at 12% 5%,#fffafd 0,transparent 34%),radial-gradient(ellipse at 90% 28%,#f0d3e1 0,transparent 30%),linear-gradient(145deg,var(--bg),var(--bg2) 55%,#f9eaf0);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;overflow-x:hidden}
+body.dark{--bg:#241b26;--bg2:#342334;--paper:rgba(60,43,58,.78);--paper2:#443044;--ink:#fff0f6;--muted:#c5a9bb;--line:#61465b;--shadow:0 22px 70px #09050b55;background:radial-gradient(ellipse at 10% 5%,#53354b 0,transparent 36%),linear-gradient(145deg,#211923,#39283a)}
+button,input,textarea{font:inherit}button{cursor:pointer}
+.grain{position:fixed;inset:0;pointer-events:none;z-index:20;opacity:.12;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E")}
+.bgblob{position:fixed;border-radius:50%;filter:blur(5px);pointer-events:none;z-index:-1}.blob1{width:280px;height:280px;left:-120px;top:24%;background:#f0b9d055}.blob2{width:360px;height:360px;right:-180px;top:60%;background:#d8b2df44}
+header{position:sticky;top:0;z-index:10;padding:12px 18px;background:color-mix(in srgb,var(--bg) 72%,transparent);backdrop-filter:blur(22px);border-bottom:1px solid color-mix(in srgb,var(--line) 65%,transparent)}
+.nav{max-width:1120px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:12px}.brand{font-weight:800;letter-spacing:-.04em;color:var(--rose);white-space:nowrap}.navlinks{display:flex;gap:18px;align-items:center;overflow:auto;scrollbar-width:none}.navlinks a{font-size:12px;color:var(--muted);text-decoration:none;white-space:nowrap}.navlinks a:hover{color:var(--rose)}.iconbtn{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--paper);color:var(--rose);font-size:17px;flex:none}
+main{max-width:1120px;margin:auto;padding:28px 20px 70px}.hero{min-height:670px;display:grid;place-items:center;text-align:center;position:relative;padding:65px 20px 85px}.hero-inner{max-width:760px}.kicker{font-size:11px;text-transform:uppercase;letter-spacing:.24em;color:var(--rose);font-weight:750}.hero h1{font-size:clamp(58px,11vw,120px);line-height:.88;letter-spacing:-.085em;margin:25px 0 20px;font-weight:850}.hero h1 span{display:block;font-family:Georgia,serif;font-style:italic;font-weight:400;color:var(--rose);letter-spacing:-.07em}.hero p{max-width:520px;margin:0 auto;color:var(--muted);font-size:17px;line-height:1.75}.hero-heart{width:130px;height:130px;margin:32px auto 27px;border-radius:42% 58% 55% 45%;display:grid;place-items:center;background:linear-gradient(145deg,#fff,#f0c6d9);box-shadow:0 20px 55px #c47d9d44;transform:rotate(-8deg);animation:float 5s ease-in-out infinite}.hero-heart span{font-size:65px;color:#bd6e91;transform:rotate(8deg);filter:drop-shadow(0 7px 8px #9c547744)}@keyframes float{50%{transform:translateY(-13px) rotate(4deg)}}
+.btn{border:0;border-radius:999px;padding:14px 22px;background:linear-gradient(135deg,#d98eae,#a95e83);color:white;font-weight:700;font-size:14px;box-shadow:0 10px 25px #b56f9140;transition:.2s}.btn:hover{transform:translateY(-2px);box-shadow:0 15px 32px #b56f9155}.btn.secondary{background:var(--paper);border:1px solid var(--line);color:var(--rose);box-shadow:none}.btn.small{padding:10px 15px;font-size:12px}.scrollhint{margin-top:38px;color:var(--muted);font-size:11px;letter-spacing:.13em}.scrollhint b{display:block;font-size:23px;margin-top:8px;animation:down 1.6s infinite}@keyframes down{50%{transform:translateY(6px)}}
+.section{margin:0 auto 90px}.section-head{text-align:center;margin-bottom:28px}.eyebrow{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--rose);font-weight:800}.section h2{font-size:clamp(32px,5vw,54px);letter-spacing:-.065em;line-height:1.03;margin:12px 0;color:var(--ink)}.section-head p{color:var(--muted);line-height:1.7;max-width:550px;margin:0 auto;font-size:14px}
+.glass{background:var(--paper);border:1px solid color-mix(in srgb,var(--line) 75%,white);border-radius:30px;box-shadow:var(--shadow);backdrop-filter:blur(20px)}
+.introgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.letter{padding:34px}.letter h3{font-size:22px;margin:0 0 15px;letter-spacing:-.04em}.letter p{color:var(--muted);font-size:15px;line-height:1.9;margin:0 0 12px}.quote{display:flex;align-items:center;justify-content:center;text-align:center;padding:28px;background:linear-gradient(145deg,#f7dce7aa,#fff7fb88);min-height:260px}.quote p{font:italic 29px/1.5 Georgia,serif;color:#a35f80;margin:0;max-width:390px}
+.toolbar{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:0 0 22px}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.memory{padding:11px;position:relative;overflow:hidden;transform:rotate(var(--tilt,0deg));transition:.25s}.memory:hover{transform:translateY(-5px) rotate(0deg)}.photo{height:280px;border-radius:21px;overflow:hidden;position:relative;background:linear-gradient(145deg,#f5dce7,#e6c9dd 55%,#f8edf2);display:grid;place-items:center}.photo img{width:100%;height:100%;object-fit:cover;display:none}.photo.has img{display:block}.photo.has .placeholder{display:none}.placeholder{text-align:center;color:#a46c87;padding:20px}.placeholder b{display:block;font-size:45px;margin-bottom:10px;font-weight:400}.placeholder span{font-size:12px;line-height:1.5}.memory .caption{padding:15px 9px 8px}.caption input{width:100%;border:0;outline:0;background:transparent;color:var(--ink);font-weight:750;font-size:16px;padding:4px 0}.caption textarea{width:100%;min-height:48px;resize:vertical;border:0;outline:0;background:transparent;color:var(--muted);font-size:13px;line-height:1.55;padding:5px 0}.memory-actions{display:flex;justify-content:space-between;align-items:center;padding:4px 8px 9px}.memory-actions button{border:0;background:transparent;color:var(--rose);font-size:12px}.memory input[type=file]{display:none}.memory:nth-child(3n+1){--tilt:-1.1deg}.memory:nth-child(3n){--tilt:1deg}
+.timeline{max-width:760px;margin:auto;position:relative}.timeline:before{content:"";position:absolute;left:22px;top:12px;bottom:12px;width:1px;background:linear-gradient(var(--pink),transparent)}.event{position:relative;padding:0 0 22px 62px}.event:before{content:"♡";position:absolute;left:8px;top:3px;width:29px;height:29px;border-radius:50%;background:var(--paper2);border:1px solid var(--line);display:grid;place-items:center;color:var(--rose);font-size:15px}.eventcard{padding:22px 24px}.eventcard input{width:100%;background:transparent;border:0;outline:0;color:var(--rose);font-weight:750;font-size:11px;letter-spacing:.1em;text-transform:uppercase}.eventcard textarea{width:100%;background:transparent;border:0;outline:0;resize:vertical;color:var(--ink);font-size:14px;line-height:1.7;margin-top:7px}
+.reasons{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}.reason{padding:23px 16px;text-align:center;min-height:145px;display:flex;flex-direction:column;justify-content:center}.reason b{font-size:26px;color:var(--rose);margin-bottom:9px}.reason span{font-size:13px;line-height:1.5;color:var(--muted)}
+.counterbox{padding:34px;text-align:center}.counterbox .number{font-size:clamp(48px,9vw,90px);font-weight:850;letter-spacing:-.08em;color:var(--rose);line-height:1.1}.counterbox p{color:var(--muted);font-size:14px;line-height:1.7}
+.compliment{padding:40px 25px;text-align:center}.compliment .spark{font-size:34px}.compliment #complimentText{font:italic clamp(22px,4vw,34px)/1.45 Georgia,serif;color:var(--rose);max-width:650px;margin:18px auto 25px;min-height:92px}
+.letter-full{padding:clamp(25px,5vw,55px);text-align:center}.letter-full p{font:17px/2 Georgia,serif;color:var(--muted);max-width:700px;margin:14px auto}.signature{font:italic 32px Georgia,serif;color:var(--rose);margin-top:28px}
+.question{padding:38px 22px;text-align:center}.question h2{font:italic clamp(30px,6vw,52px) Georgia,serif;color:var(--rose);letter-spacing:-.04em}.question p{color:var(--muted);line-height:1.7}.answer{display:none;margin:25px auto 0;padding:20px;border-radius:22px;background:var(--paper2);max-width:520px;color:var(--rose);font:italic 23px Georgia,serif}.answer.show{display:block;animation:pop .4s ease}@keyframes pop{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}
+footer{text-align:center;padding:30px 10px;color:var(--muted);font-size:12px}footer strong{display:block;color:var(--rose);font:italic 27px Georgia,serif;margin-bottom:8px}
+.editnote{text-align:center;color:var(--muted);font-size:11px;margin-top:12px}
+.fall{position:fixed;top:-30px;z-index:30;pointer-events:none;animation:fall linear forwards}@keyframes fall{to{transform:translateY(110vh) rotate(380deg);opacity:0}}
+.toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,20px);background:#58394d;color:white;padding:12px 18px;border-radius:99px;font-size:12px;opacity:0;transition:.25s;z-index:50;pointer-events:none}.toast.show{opacity:1;transform:translate(-50%,0)}
+
+#quizOptions button{border:1px solid var(--line);background:var(--paper2);color:var(--ink);padding:12px 14px;border-radius:15px;text-align:left;font-size:13px;transition:.2s}
+#quizOptions button:hover{border-color:var(--pink);transform:translateX(3px)}
+#quizOptions button.correct{background:#e1f2e7;color:#37684a;border-color:#acd6b8}
+#quizOptions button.wrong{background:#f9e2e9;color:#9d4f6b;border-color:#e9b6c8}
+.envelope{border:1px solid var(--line);border-radius:17px;background:var(--paper2);min-height:75px;font-size:30px;color:var(--rose);transition:.2s}
+.envelope:hover{transform:translateY(-4px);box-shadow:0 9px 20px #a85e8222}
+.memcard{aspect-ratio:1;border:0;border-radius:18px;background:linear-gradient(145deg,#f4d8e4,#fff5fa);color:#a45f80;font-size:34px;box-shadow:inset 0 0 0 1px #fff;transition:transform .2s}
+.memcard:active{transform:scale(.96)}.memcard.opened,.memcard.matched{background:var(--paper2);font-size:34px}.memcard.matched{box-shadow:inset 0 0 0 2px #d994b1}
+.cute{cursor:pointer;transition:.2s}.cute:hover{transform:translateY(-4px) scale(1.02)}
+.walltile{aspect-ratio:1;border-radius:14px;overflow:hidden;background:linear-gradient(145deg,#f4d8e4,#fff5fa);display:grid;place-items:center;color:#a45f80;font-size:25px;position:relative}
+.walltile img{width:100%;height:100%;object-fit:cover}.walltile button{position:absolute;right:5px;top:5px;border:0;border-radius:50%;background:#fff;color:#9b5474;width:25px;height:25px}
+@media(max-width:480px){#photoWall{grid-template-columns:repeat(3,1fr)!important}#memoryBoard{gap:7px!important}.memcard{border-radius:13px}}
+
+@media(max-width:760px){.navlinks{gap:12px}.navlinks a{font-size:11px}.hero{min-height:600px}.introgrid{grid-template-columns:1fr}.gallery{grid-template-columns:repeat(2,1fr);gap:12px}.photo{height:230px}.reasons{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){main{padding:10px 13px 45px}.navlinks a:nth-child(n+4){display:none}.brand{font-size:14px}.hero{min-height:570px;padding:55px 5px}.hero p{font-size:15px}.gallery{grid-template-columns:1fr 1fr;gap:9px}.memory{padding:7px;border-radius:22px}.photo{height:185px;border-radius:16px}.caption input{font-size:13px}.caption textarea{font-size:11px;min-height:55px}.memory-actions button{font-size:10px}.section{margin-bottom:65px}.letter{padding:24px}.quote{min-height:190px}.quote p{font-size:23px}.reasons{gap:9px}.reason{min-height:130px;padding:15px 10px}.counterbox{padding:25px 12px}.timeline:before{left:15px}.event{padding-left:46px}.event:before{left:1px}.eventcard{padding:17px}}
 </style>
 </head>
 <body>
-<div class="ambient a1"></div><div class="ambient a2"></div>
+<div class="grain"></div><div class="bgblob blob1"></div><div class="bgblob blob2"></div>
+<header><nav class="nav"><div class="brand">♡ Ксюша & я</div><div class="navlinks"><a href="#letter">Письмо</a><a href="#gallery">Наши фото</a><a href="#story">История</a><a href="#reasons">За что люблю</a><a href="#ending">В конце</a></div><button class="iconbtn" id="themeBtn" title="Сменить оформление">☾</button></nav></header>
 <main>
-  <div class="status"><span>9:41</span><span class="icons"><span>●●●</span><span>◖</span><span>▰</span></span></div>
-  <div class="phone">
-    <section class="hero">
-      <button class="music" id="musicBtn" aria-label="Включить романтический звук" title="Небольшой звук">♫</button>
-      <div class="eyebrow">маленькое послание для тебя</div>
-      <h1>Ксюша,<br>это тебе ♡</h1>
-      <p class="subtitle">Я хотел оставить здесь несколько слов, которые иногда сложно сказать вслух.</p>
-      <div class="orb"><span class="bigheart">♡</span></div>
-      <button class="btn" id="openBtn">Открыть моё признание</button>
-      <div class="hint">нажми — там кое-что важное</div>
-    </section>
-    <section class="section">
-      <div class="panel reveal" id="letter">
-        <h2>Самое главное</h2>
-        <p class="note">Ксюша, я очень рад, что ты есть в моей жизни. Мне нравится твоя улыбка, твой взгляд, твой голос и даже самые обычные моменты рядом с тобой. С тобой хочется делиться всем — смешными мелочами, мыслями, музыкой и просто тишиной.</p>
-        <p class="note" style="margin-top:13px">Я не обещаю быть идеальным. Но я хочу стараться: беречь тебя, слышать, поддерживать и каждый день показывать, насколько ты мне дорога.</p>
-        <p class="quote">«Мне красота твоих глаз не даёт уснуть — и, кажется, я совсем не против»</p>
-        <p class="note">Спасибо, что ты — это ты. Я люблю тебя. ♡</p>
-      </div>
-      <div class="panel">
-        <h2>Что я особенно люблю</h2>
-        <p>В тебе есть столько маленьких вещей, из которых складывается моё большое счастье.</p>
-        <div class="grid">
-          <div class="tile"><b>♡</b>Твою улыбку</div>
-          <div class="tile"><b>☾</b>Наши разговоры</div>
-          <div class="tile"><b>✧</b>Быть рядом</div>
-        </div>
-      </div>
-      <div class="panel" style="text-align:center">
-        <h2>И ещё кое-что…</h2>
-        <p>Если бы мне снова пришлось выбирать, с кем разделить свои дни, я бы снова захотел узнать тебя.</p>
-        <div style="margin-top:18px"><button class="btn" id="surpriseBtn">Нажми на сердечко ♡</button></div>
-        <div class="reveal" id="surprise"><p class="quote">Ты — моё любимое «сегодня» и человек, с которым хочется встречать все следующие дни.</p></div>
-      </div>
-    </section>
-    <div class="footer"><strong>С любовью, для моей Ксюши ♡</strong>Это маленькая страничка — но чувства в ней настоящие.</div>
-  </div>
-  <div class="smallprint">сделано с нежностью · 2026</div>
-</main>
+<section class="hero" id="top"><div class="hero-inner"><div class="kicker">личный сайт · только для тебя</div><h1>Моя <span>Ксюша.</span></h1><p>Я мог бы просто сказать тебе, как сильно ты мне дорога. Но решил собрать целый маленький мир, в котором каждая страница напоминает мне о тебе.</p><div class="hero-heart"><span>♡</span></div><button class="btn" onclick="document.querySelector('#letter').scrollIntoView({behavior:'smooth'})">Начать наше путешествие ↓</button><div class="scrollhint">ЛИСТАЙ ВНИЗ, ТАМ МНОГО ЛЮБВИ<b>⌄</b></div></div></section>
+
+<section class="section" id="letter"><div class="section-head"><div class="eyebrow">01 · несколько важных слов</div><h2>Для самого родного человека</h2><p>Не идеальные фразы. Просто то, что я действительно чувствую.</p></div>
+<div class="introgrid"><div class="glass letter"><h3>Ксюша, любимая…</h3><p>Я очень рад, что однажды в моей жизни появилась именно ты. Иногда я смотрю на тебя и думаю, насколько же мне повезло.</p><p>Мне нравится проводить с тобой время, слушать тебя, смеяться над какой-нибудь ерундой и даже просто находиться рядом, ничего особенного не делая.</p><p>Я хочу быть человеком, рядом с которым тебе спокойно, тепло и хорошо. Хочу заботиться о тебе, поддерживать и напоминать, какая ты невероятная.</p><p><b>Я очень-очень тебя люблю. ♡</b></p></div><div class="glass quote"><p>«Из всех случайностей моей жизни знакомство с тобой — самая любимая»</p></div></div></section>
+
+<section class="section" id="gallery"><div class="section-head"><div class="eyebrow">02 · наша маленькая вселенная</div><h2>Моменты, которые хочется оставить</h2><p>Добавь сюда ваши фотографии. Нажми на любую карточку, выбери фото и напиши под ним вашу историю.</p></div>
+<div class="toolbar"><button class="btn" id="addPhoto">＋ Добавить фотографию</button><button class="btn secondary" id="saveBtn">Сохранить изменения</button><button class="btn secondary" id="resetGallery">Вернуть примеры</button></div>
+<div class="gallery" id="galleryGrid"></div><div class="editnote">Подсказка: подписи можно менять прямо на странице. Фотографии и подписи сохраняются в этом браузере на этом устройстве.</div></section>
+
+<section class="section" id="story"><div class="section-head"><div class="eyebrow">03 · наша история</div><h2>И пусть это только начало</h2><p>Здесь можно записать ваши даты, первые моменты и маленькие события, которые важны только вам двоим.</p></div>
+<div class="timeline" id="timeline">
+<div class="event"><div class="glass eventcard"><input value="День, когда всё началось" aria-label="Название события"><textarea rows="2">Тот самый момент, после которого в моей жизни стало на одного особенного человека больше.</textarea></div></div>
+<div class="event"><div class="glass eventcard"><input value="Наш первый особенный момент"><textarea rows="2">Я хочу помнить не только большие события, но и все маленькие детали, из которых складывается наше «мы».</textarea></div></div>
+<div class="event"><div class="glass eventcard"><input value="То, что впереди"><textarea rows="2">Ещё столько прогулок, разговоров, объятий, фотографий и историй, которые мы пока даже не знаем.</textarea></div></div>
+</div><div class="toolbar"><button class="btn secondary" id="addEvent">＋ Добавить воспоминание</button></div></section>
+
+<section class="section" id="reasons"><div class="section-head"><div class="eyebrow">04 · бесконечный список</div><h2>1000 причин любить тебя</h2><p>Вот только несколько. И я уверен, что каждый день нахожу новые.</p></div>
+<div class="reasons">
+<div class="glass reason"><b>♡</b><span>За твою улыбку, от которой у меня становится лучше настроение.</span></div>
+<div class="glass reason"><b>✧</b><span>За твои глаза, в которых хочется задержаться.</span></div>
+<div class="glass reason"><b>☾</b><span>За наши разговоры — даже самые обычные.</span></div>
+<div class="glass reason"><b>❀</b><span>За то, какая ты настоящая.</span></div>
+<div class="glass reason"><b>ღ</b><span>За твою нежность и тепло.</span></div>
+<div class="glass reason"><b>♡</b><span>За то, что с тобой можно быть собой.</span></div>
+<div class="glass reason"><b>∞</b><span>За каждую минуту, проведённую вместе.</span></div>
+<div class="glass reason"><b>★</b><span>Просто за то, что ты — это ты.</span></div>
+</div></section>
+
+<section class="section"><div class="section-head"><div class="eyebrow">05 · маленькое напоминание</div><h2>Если вдруг забудешь…</h2></div><div class="glass compliment"><div class="spark">✧ ♡ ✧</div><div id="complimentText">Ты невероятно красивая. И дело не только во внешности — в тебе очень много того, что хочется беречь.</div><button class="btn" id="complimentBtn">Ещё один комплимент</button></div></section>
+
+<section class="section"><div class="section-head"><div class="eyebrow">06 · немного времени</div><h2>Время рядом с тобой</h2><p>Можно указать дату вашего знакомства или начала отношений — и сайт будет считать дни.</p></div><div class="glass counterbox"><div class="number" id="daysCount">∞</div><p id="counterLabel">дней с нашей первой встречи</p><div class="toolbar" style="margin-top:18px"><input type="date" id="startDate" style="padding:11px 14px;border-radius:99px;border:1px solid var(--line);background:var(--paper2);color:var(--ink)"><button class="btn small" id="setDate">Установить дату</button></div><p style="font-size:11px">Дата хранится только в этом браузере. Если не хотите считать — оставьте бесконечность ♡</p></div></section>
+
+<section class="section" id="ending"><div class="section-head"><div class="eyebrow">07 · последнее письмо на сегодня</div><h2>И напоследок…</h2></div><div class="glass letter-full"><div class="eyebrow">моей любимой девочке</div><p>Ксюша, я не знаю, сколько ещё страниц будет в нашей истории. Но мне очень хочется, чтобы их было много. Чтобы мы вместе росли, учились понимать друг друга, поддерживали друг друга и не забывали радоваться простым вещам.</p><p>Я хочу фотографировать наши глупые моменты, запоминать твои смешные фразы, обнимать тебя после долгого дня и снова и снова выбирать тебя — не только в особенные дни, но и в самые обычные.</p><p>Пусть этот сайт будет маленьким напоминанием: где-то есть человек, который думает о тебе, улыбается из-за тебя и очень дорожит тобой.</p><div class="signature">Твой Саша ♡</div></div></section>
+
+
+<section class="section" id="play"><div class="section-head"><div class="eyebrow">08 · наша игровая</div><h2>Немного любви и веселья</h2><p>Тут можно играть, проверять, насколько хорошо мы знаем друг друга, и открывать маленькие сюрпризы.</p></div>
+<div class="introgrid">
+<div class="glass letter"><h3>🎀 Викторина про нас</h3><p>Проверь, насколько хорошо ты знаешь своего Сашу. Это не экзамен — тут за каждый ответ полагается виртуальное объятие.</p><div id="quizBox" style="margin-top:18px"><div id="quizProgress" class="eyebrow">ВОПРОС 1 ИЗ 5</div><h3 id="quizQuestion" style="margin-top:12px">Что я выберу для идеального вечера?</h3><div id="quizOptions" style="display:grid;gap:9px"></div><p id="quizFeedback" aria-live="polite" style="margin-top:13px;min-height:25px"></p><button class="btn small" id="quizNext" style="display:none">Следующий вопрос →</button></div></div>
+<div class="glass letter"><h3>💌 Открой записочки</h3><p>Выбери конверт — внутри спрятано маленькое сообщение для тебя.</p><div id="envelopes" style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:22px"></div><p id="envelopeMessage" class="quote" style="font-size:19px!important;min-height:95px;margin-top:14px">Выбери один конвертик ♡</p></div>
+</div></section>
+
+<section class="section" id="memorygame"><div class="section-head"><div class="eyebrow">09 · мини-игра</div><h2>Найди одинаковые сердечки</h2><p>Переверни карточки и найди все пары. Маленькая тренировка памяти с большой наградой.</p></div>
+<div class="glass" style="padding:24px"><div class="toolbar"><span class="eyebrow" id="gameStatus">Найдено пар: 0 из 6</span><button class="btn secondary small" id="restartGame">Начать заново ↻</button></div><div id="memoryBoard" style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:540px;margin:auto"></div><p id="gameWin" class="quote" style="display:none;font-size:23px!important">Ты умничка! Лови тысячу виртуальных поцелуев 💋</p></div></section>
+
+<section class="section" id="wheel"><div class="section-head"><div class="eyebrow">10 · план на двоих</div><h2>Что сделаем вместе?</h2><p>Нажми на кнопку, и сайт придумает вам милую идею для совместного времени.</p></div><div class="glass compliment"><div style="font-size:48px">🎡</div><div id="dateIdea" style="font:italic clamp(22px,4vw,32px)/1.45 Georgia,serif;color:var(--rose);min-height:95px;display:grid;place-items:center">Ваш следующий маленький план может начаться прямо сейчас.</div><button class="btn" id="ideaBtn">Придумать нам свидание ♡</button></div></section>
+
+<section class="section" id="reasons-more"><div class="section-head"><div class="eyebrow">11 · ещё немного нежности</div><h2>Твоя личная коллекция милоты</h2><p>Нажимай на карточки — у каждой есть маленькое продолжение.</p></div>
+<div class="reasons" id="cuteCards">
+<div class="glass reason cute" data-message="Потому что твой смех — мой любимый звук."><b>🎧</b><span>Любимый звук</span></div>
+<div class="glass reason cute" data-message="Потому что даже обычный день рядом с тобой становится событием."><b>☀️</b><span>Моё солнышко</span></div>
+<div class="glass reason cute" data-message="Потому что я хочу обнимать тебя чуть дольше каждый раз."><b>🧸</b><span>Самые тёплые объятия</span></div>
+<div class="glass reason cute" data-message="Потому что ты умеешь быть красивой даже тогда, когда просто задумалась."><b>🌷</b><span>Моя красота</span></div>
+<div class="glass reason cute" data-message="Потому что с тобой хочется делиться даже самой маленькой новостью."><b>🍓</b><span>Первой рассказать</span></div>
+<div class="glass reason cute" data-message="Потому что я выбираю не идеальную сказку, а настоящую нас."><b>✨</b><span>Наша история</span></div>
+<div class="glass reason cute" data-message="Потому что ты заслуживаешь заботы не только по праздникам."><b>🫶</b><span>Моя забота</span></div>
+<div class="glass reason cute" data-message="Потому что моё любимое место — там, где ты."><b>🏡</b><span>Моё место</span></div>
+</div><p id="cuteMessage" class="quote" style="min-height:70px">Выбери карточку, Ксюша ♡</p></section>
+
+<section class="section"><div class="section-head"><div class="eyebrow">12 · ваши слова</div><h2>Баночка тёплых слов</h2><p>Добавляй сюда фразы, шутки, ваши словечки и то, что хочется сохранить.</p></div><div class="glass letter"><div style="display:flex;gap:8px;flex-wrap:wrap"><input id="jarInput" placeholder="Напиши ваше особенное словечко…" maxlength="100" style="flex:1;min-width:180px;padding:13px 15px;border-radius:99px;border:1px solid var(--line);background:var(--paper2);color:var(--ink)"><button class="btn small" id="jarAdd">Добавить ♡</button></div><div id="jarList" style="display:flex;gap:9px;flex-wrap:wrap;margin-top:18px"></div></div></section>
+
+<section class="section"><div class="section-head"><div class="eyebrow">13 · фотоальбом без конца</div><h2>Ещё больше наших кадров</h2><p>Отдельная большая стена для снимков, скриншотов, смешных селфи и любимых моментов.</p></div><div class="glass letter"><div class="toolbar"><button class="btn" id="wallAdd">＋ Добавить фото на стену</button></div><div id="photoWall" style="display:grid;grid-template-columns:repeat(4,1fr);gap:9px"></div><input type="file" id="wallFile" accept="image/*" multiple style="display:none"><p class="editnote">Выбранные фото появятся здесь. Сохраняются в памяти браузера, пока хватает места.</p></div></section>
+
+<section class="section"><div class="glass question"><div class="eyebrow">самый важный вопрос</div><h2>Можно я и дальше буду делать тебя счастливой?</h2><p>Тут нет неправильного ответа. Просто нажми на кнопку, если хочешь увидеть секретное послание.</p><button class="btn" id="secretBtn">Узнать секрет ♡</button><div class="answer" id="secretAnswer">Тогда приготовься к большому количеству объятий, глупых шуток, поддержки и любви. Я рядом. ♡</div></div></section>
+<footer><strong>Для Ксюши. С любовью.</strong>Сделано не потому, что был повод. А потому, что ты есть.<br><br><a href="#top" style="color:var(--rose);text-decoration:none">Наверх ↑</a></footer>
+</main><div class="toast" id="toast">Сохранено ♡</div>
 <script>
-const letter=document.getElementById('letter');
-document.getElementById('openBtn').addEventListener('click',()=>{
-  letter.classList.add('show');
-  letter.scrollIntoView({behavior:'smooth',block:'center'});
-  burst();
-});
-document.getElementById('surpriseBtn').addEventListener('click',()=>{
-  document.getElementById('surprise').classList.toggle('show');
-  burst();
-});
-function burst(){
-  const symbols=['♡','♥','✧','ღ'];
-  for(let i=0;i<24;i++){
-    const el=document.createElement('span');el.className='heart-fall';
-    el.textContent=symbols[Math.floor(Math.random()*symbols.length)];
-    el.style.left=Math.random()*100+'vw';
-    el.style.fontSize=(14+Math.random()*18)+'px';
-    el.style.color=['#c8799d','#e49ab8','#a86a91'][Math.floor(Math.random()*3)];
-    el.style.animationDuration=(3+Math.random()*3)+'s';
-    document.body.appendChild(el);setTimeout(()=>el.remove(),6500);
-  }
-}
-// A subtle, optional two-note chime generated locally; no external audio or tracking.
-document.getElementById('musicBtn').addEventListener('click',()=>{
-  try{
-    const Ctx=window.AudioContext||window.webkitAudioContext;
-    const ctx=new Ctx();
-    [523.25,659.25].forEach((freq,i)=>{
-      const osc=ctx.createOscillator(),gain=ctx.createGain();
-      osc.type='sine';osc.frequency.value=freq;
-      gain.gain.setValueAtTime(.0001,ctx.currentTime+i*.18);
-      gain.gain.exponentialRampToValueAtTime(.045,ctx.currentTime+i*.18+.03);
-      gain.gain.exponentialRampToValueAtTime(.0001,ctx.currentTime+i*.18+.65);
-      osc.connect(gain);gain.connect(ctx.destination);
-      osc.start(ctx.currentTime+i*.18);osc.stop(ctx.currentTime+i*.18+.7);
-    });
-    setTimeout(()=>ctx.close(),1200);
-  }catch(e){}
-});
+const $=s=>document.querySelector(s);
+const defaultMemories=[
+ ['Наше любимое фото','Здесь будет момент, который хочется пересматривать снова и снова.'],
+ ['Та самая улыбка','Каждый раз, когда ты так улыбаешься, я влюбляюсь ещё сильнее.'],
+ ['Счастье в мелочах','Самые обычные дни с тобой становятся особенными.'],
+ ['Мой любимый человек','Хочу сохранить побольше таких мгновений.'],
+ ['Вместе — лучше','Пусть таких фотографий будет ещё очень-очень много.'],
+ ['Ещё одно воспоминание','У этой фотографии точно есть своя маленькая история.']
+];
+let memories=[];
+function loadMemories(){try{memories=JSON.parse(localStorage.getItem('ks_memories'))||defaultMemories.map(x=>({title:x[0],desc:x[1],src:''}));}catch(e){memories=defaultMemories.map(x=>({title:x[0],desc:x[1],src:''}));}renderGallery()}
+function renderGallery(){const grid=$('#galleryGrid');grid.innerHTML='';memories.forEach((m,i)=>{const card=document.createElement('article');card.className='glass memory';card.innerHTML=`<div class="photo ${m.src?'has':''}"><img alt="Воспоминание ${i+1}"><div class="placeholder"><b>♡</b><span>Нажми «Выбрать фото»<br>и добавь ваш момент</span></div></div><div class="caption"><input aria-label="Подпись к фото" maxlength="70"><textarea aria-label="Описание фото" rows="2"></textarea></div><div class="memory-actions"><button class="choose">＋ Выбрать фото</button><button class="remove">Убрать</button></div><input type="file" accept="image/*">`;
+const img=card.querySelector('img');if(m.src)img.src=m.src;const title=card.querySelector('input[aria-label]');title.value=m.title||'';const desc=card.querySelector('textarea');desc.value=m.desc||'';
+title.addEventListener('input',()=>memories[i].title=title.value);desc.addEventListener('input',()=>memories[i].desc=desc.value);
+card.querySelector('.choose').onclick=()=>card.querySelector('input[type=file]').click();
+card.querySelector('input[type=file]').onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{memories[i].src=r.result;img.src=r.result;card.querySelector('.photo').classList.add('has');save(false)};r.readAsDataURL(f)};
+card.querySelector('.remove').onclick=()=>{memories.splice(i,1);renderGallery();save(false)};
+grid.appendChild(card)})}
+function save(notify=true){try{localStorage.setItem('ks_memories',JSON.stringify(memories));if(notify)toast('Изменения сохранены ♡')}catch(e){toast('Фото слишком большое — попробуй другое или уменьши его')}}
+function toast(t){const el=$('#toast');el.textContent=t;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2200)}
+$('#addPhoto').onclick=()=>{memories.push({title:'Новое воспоминание',desc:'Напиши здесь, почему этот момент особенный…',src:''});renderGallery();$('#galleryGrid').lastElementChild.scrollIntoView({behavior:'smooth',block:'center'})};
+$('#saveBtn').onclick=()=>save(true);
+$('#resetGallery').onclick=()=>{if(confirm('Вернуть начальные карточки? Добавленные фото и подписи галереи будут сброшены.')){memories=defaultMemories.map(x=>({title:x[0],desc:x[1],src:''}));renderGallery();save()}};
+$('#addEvent').onclick=()=>{const e=document.createElement('div');e.className='event';e.innerHTML='<div class="glass eventcard"><input value="Новое воспоминание"><textarea rows="2">Расскажи, что хочется запомнить…</textarea></div>';$('#timeline').appendChild(e)};
+const compliments=['Ты красивая даже тогда, когда сама этого не замечаешь.','Твоя улыбка — один из моих любимых видов счастья.','Мне нравится слушать тебя, даже если ты рассказываешь самую обычную историю.','Ты делаешь мои дни теплее просто тем, что в них есть.','Я люблю твои маленькие привычки и детали, которые делают тебя тобой.','Рядом с тобой мне хочется становиться лучше — не из страха, а из любви.','У тебя удивительно красивые глаза. Я могу смотреть в них бесконечно.','Ты — мой любимый человек для любых планов: даже для тех, где плана нет.','Мне повезло знать тебя не только красивой, но и настоящей.','Если бы можно было сохранить одно чувство в кармане, я бы сохранил ощущение, когда обнимаю тебя.'];
+let last=-1;$('#complimentBtn').onclick=()=>{let n;do{n=Math.floor(Math.random()*compliments.length)}while(n===last);last=n;$('#complimentText').textContent=compliments[n];heartRain(12)};
+$('#secretBtn').onclick=()=>{$('#secretAnswer').classList.toggle('show');heartRain(22)};
+$('#themeBtn').onclick=()=>{document.body.classList.toggle('dark');$('#themeBtn').textContent=document.body.classList.contains('dark')?'☀':'☾'};
+function heartRain(count=20){const chars=['♡','♥','✧','❀'];for(let i=0;i<count;i++){const x=document.createElement('span');x.className='fall';x.textContent=chars[Math.floor(Math.random()*chars.length)];x.style.left=Math.random()*100+'vw';x.style.fontSize=(14+Math.random()*22)+'px';x.style.color=['#d989aa','#b66e92','#e5a9c2'][i%3];x.style.animationDuration=(3+Math.random()*3)+'s';document.body.appendChild(x);setTimeout(()=>x.remove(),6500)}}
+$('#setDate').onclick=()=>{const v=$('#startDate').value;if(!v)return toast('Сначала выбери дату ♡');localStorage.setItem('ks_start',v);updateDays()};
+function updateDays(){const v=localStorage.getItem('ks_start');if(!v)return;$('#startDate').value=v;const d=Math.floor((new Date().setHours(0,0,0,0)-new Date(v+'T00:00:00').getTime())/86400000);$('#daysCount').textContent=Math.max(0,d).toLocaleString('ru-RU');$('#counterLabel').textContent='дней с выбранной вами даты ♡'}
+loadMemories();updateDays();
+
+// Interactive quiz — customize the correct answers to your real shared memories.
+const quiz=[
+ {q:'Что я больше всего люблю делать рядом с тобой?',a:['Обнимать тебя и болтать обо всём','Считать облака','Собирать пылесос'],c:0,why:'Да! Просто быть рядом с тобой — уже мой любимый план.'},
+ {q:'Что для меня самое важное в отношениях?',a:['Всегда быть правым','Слышать, беречь и поддерживать друг друга','Выбирать фильм быстрее всех'],c:1,why:'Именно. Я хочу, чтобы мы всегда были командой.'},
+ {q:'Какой подарок я бы выбрал для тебя?',a:['Что-то без души','То, что напомнит тебе, как сильно я тебя люблю','Один носок'],c:1,why:'Потому что главное — чтобы ты чувствовала мою любовь.'},
+ {q:'Что я хочу собирать вместе с тобой?',a:['Пыль на полках','Поводы спорить','Воспоминания, фотографии и счастливые дни'],c:2,why:'И чтобы альбом никогда не заканчивался.'},
+ {q:'Кто самая прекрасная девочка на свете?',a:['Ксюша','Ксюша','Тут даже вариантов других нет'],c:0,why:'Правильный ответ — КСЮША. Хотя все варианты правильные ❤️'}
+];
+let qi=0,score=0,answered=false;
+function drawQuiz(){const q=quiz[qi];$('#quizProgress').textContent=`ВОПРОС ${qi+1} ИЗ ${quiz.length}`;$('#quizQuestion').textContent=q.q;$('#quizOptions').innerHTML='';$('#quizFeedback').textContent='';$('#quizNext').style.display='none';answered=false;q.a.forEach((a,i)=>{const b=document.createElement('button');b.textContent=a;b.onclick=()=>{if(answered)return;answered=true;const correct=i===q.c;if(correct)score++;b.classList.add(correct?'correct':'wrong');$('#quizFeedback').textContent=q.why;[...$('#quizOptions').children].forEach((x,j)=>{if(j===q.c)x.classList.add('correct');x.disabled=true});$('#quizNext').style.display='inline-block';$('#quizNext').textContent=qi===quiz.length-1?'Узнать результат ♡':'Дальше →'};$('#quizOptions').appendChild(b)})}
+$('#quizNext').onclick=()=>{if(qi<quiz.length-1){qi++;drawQuiz()}else{$('#quizBox').innerHTML=`<div class="quote">${score===quiz.length?'Идеально! Ты знаешь, как сильно я тебя люблю.':'Главное не баллы, а то, что мы узнаём друг друга каждый день.'}</div><h3 style="text-align:center;color:var(--rose)">Твой результат: ${score} / ${quiz.length} ♡</h3><button class="btn small" onclick="qi=0;score=0;drawQuiz()">Пройти ещё раз</button>`;heartRain(20)}};
+drawQuiz();
+const notes=['Ты моё любимое совпадение. ♡','Обнимаю тебя крепко-крепко, даже через экран.','Ты прекрасна. Не спорь, это факт.','Я на твоей стороне. Всегда готов тебя выслушать.','Пусть сегодня у тебя будет хотя бы одна причина улыбнуться.','Если бы у нежности было имя, оно было бы твоим.'];
+$('#envelopes').innerHTML=notes.map((_,i)=>`<button class="envelope" aria-label="Открыть записку ${i+1}">✉</button>`).join('');
+[...$('#envelopes').children].forEach((b,i)=>b.onclick=()=>{$('#envelopeMessage').textContent=notes[i];b.textContent='💌';heartRain(5)});
+const symbols=['♡','♥','🌷','⭐','🎀','💗'];let deck=[];
+function newGame(){deck=[...symbols,...symbols].sort(()=>Math.random()-.5);$('#memoryBoard').innerHTML='';deck.forEach((s,i)=>{const b=document.createElement('button');b.className='memcard';b.textContent='?';b.dataset.symbol=s;b.dataset.index=i;b.onclick=()=>flip(b);$('#memoryBoard').appendChild(b)});opened=[];matches=0;$('#gameStatus').textContent='Найдено пар: 0 из 6';$('#gameWin').style.display='none'}
+let opened=[],matches=0,lock=false;
+function flip(b){if(lock||b.classList.contains('opened')||b.classList.contains('matched'))return;b.classList.add('opened');b.textContent=b.dataset.symbol;opened.push(b);if(opened.length===2){if(opened[0].dataset.symbol===opened[1].dataset.symbol){opened.forEach(x=>x.classList.add('matched'));opened=[];matches++;$('#gameStatus').textContent=`Найдено пар: ${matches} из 6`;if(matches===6){$('#gameWin').style.display='block';heartRain(25)}}else{lock=true;setTimeout(()=>{opened.forEach(x=>{x.classList.remove('opened');x.textContent='?'});opened=[];lock=false},750)}}}
+$('#restartGame').onclick=newGame;newGame();
+const ideas=['Устроить домашний пикник с вкусняшками и любимым фильмом.','Сходить гулять без маршрута и фотографировать всё красивое.','Приготовить вместе что-нибудь необычное.','Сделать вечер старых фотографий и смешных воспоминаний.','Устроить свидание-сюрприз, где каждый придумывает по одной детали.','Выйти вечером посмотреть на огни города и долго разговаривать.','Собрать общий плейлист из песен, которые напоминают друг о друге.','Написать друг другу по маленькому письму и обменяться ими.'];
+$('#ideaBtn').onclick=()=>{$('#dateIdea').textContent=ideas[Math.floor(Math.random()*ideas.length)];heartRain(10)};
+document.querySelectorAll('.cute').forEach(c=>c.onclick=()=>{$('#cuteMessage').textContent=c.dataset.message;heartRain(4)});
+let jar=[];try{jar=JSON.parse(localStorage.getItem('ks_jar'))||[]}catch(e){}
+function drawJar(){$('#jarList').innerHTML='';jar.forEach((s,i)=>{const b=document.createElement('button');b.className='btn secondary small';b.textContent=s+' ×';b.onclick=()=>{jar.splice(i,1);drawJar();localStorage.setItem('ks_jar',JSON.stringify(jar))};$('#jarList').appendChild(b)})}
+$('#jarAdd').onclick=()=>{const v=$('#jarInput').value.trim();if(!v)return;jar.push(v);$('#jarInput').value='';localStorage.setItem('ks_jar',JSON.stringify(jar));drawJar()};drawJar();
+let wall=[];try{wall=JSON.parse(localStorage.getItem('ks_wall'))||[]}catch(e){}
+function drawWall(){$('#photoWall').innerHTML='';wall.forEach((src,i)=>{const d=document.createElement('div');d.className='walltile';const im=document.createElement('img');im.src=src;const del=document.createElement('button');del.textContent='×';del.onclick=()=>{wall.splice(i,1);localStorage.setItem('ks_wall',JSON.stringify(wall));drawWall()};d.append(im,del);$('#photoWall').appendChild(d)})}
+$('#wallAdd').onclick=()=>$('#wallFile').click();
+$('#wallFile').onchange=e=>{const files=[...e.target.files];files.forEach(file=>{const r=new FileReader();r.onload=()=>{wall.push(r.result);try{localStorage.setItem('ks_wall',JSON.stringify(wall));drawWall()}catch(err){toast('Память браузера заполнена. Добавь меньше фото или уменьши их размер.')}};r.readAsDataURL(file)});e.target.value=''};drawWall();
+
 </script>
-</body>
-</html>
+</body></html>
