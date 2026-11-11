@@ -79,6 +79,25 @@ footer{text-align:center;padding:30px 10px;color:var(--muted);font-size:12px}foo
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(168, 95, 131, 0.2);
 }
+
+/* СТИЛИ ДЛЯ СУБТИТРОВ */
+#lyricsOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 15;
+  pointer-events: none;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle, rgba(40,20,30,0.4) 0%, rgba(20,10,15,0.7) 100%);
+  backdrop-filter: blur(2px);
+  transition: opacity 0.5s;
+}
+#lyricsContainer {
+  text-align: center;
+  max-width: 80%;
+  font-family: Georgia, serif;
+}
 </style>
 </head>
 <body>
@@ -166,6 +185,13 @@ footer{text-align:center;padding:30px 10px;color:var(--muted);font-size:12px}foo
 <audio id="bgMusic" loop>
   <source src="1.mp3" type="audio/mpeg">
 </audio>
+
+<!-- Оверлей для субтитров -->
+<div id="lyricsOverlay" style="position:fixed;inset:0;z-index:15;pointer-events:none;display:none;align-items:center;justify-content:center;background:radial-gradient(circle, rgba(40,20,30,0.4) 0%, rgba(20,10,15,0.7) 100%);backdrop-filter:blur(2px);transition:opacity 0.5s;">
+  <div id="lyricsContainer" style="text-align:center;max-width:80%;font-family:Georgia, serif;">
+    <!-- Сюда будут вставляться строки -->
+  </div>
+</div>
 
 <script>
 const $=s=>document.querySelector(s);
@@ -418,18 +444,109 @@ $('#kissBtn').onclick = async () => {
 };
 
 /* ============================================================
-   ФИШКИ
+   ФИШКИ + МУЗЫКА + СУБТИТРЫ
    ============================================================ */
 const music = $('#bgMusic');
 music.volume = 0.15; // Тихо на фоне
 let musicPlaying = false;
+
+const lyricsOverlay = $('#lyricsOverlay');
+const lyricsContainer = $('#lyricsContainer');
+
+// Текст песни You Are My Destiny (Paul Anka)
+// Первая строчка начинается ровно на 12-й секунде (как ты просил)
+const songLyrics = [
+  { time: 12.0, text: "You are my destiny" },
+  { time: 15.5, text: "That's what you are to me" },
+  { time: 19.0, text: "You are my happiness" },
+  { time: 22.5, text: "That's what you are" },
+  { time: 26.0, text: "You have my sweet caress" },
+  { time: 29.5, text: "You share my loneliness" },
+  { time: 33.0, text: "You are my dream come true" },
+  { time: 36.5, text: "That's what you are" },
+  { time: 40.5, text: "Heaven and heaven alone" },
+  { time: 44.5, text: "Can take your love from me" },
+  { time: 48.5, text: "'Cause I'd be a fool" },
+  { time: 52.0, text: "To leave you, dear" },
+  { time: 55.5, text: "And a fool I'd never be" },
+  { time: 59.5, text: "You are my destiny" },
+  { time: 63.5, text: "You share my reverie" },
+  { time: 67.5, text: "You're more than life to me" },
+  { time: 71.5, text: "That's what you are" }
+];
+
+let lyricTimeouts = [];
+
+function resetLyrics() {
+  lyricTimeouts.forEach(t => clearTimeout(t));
+  lyricTimeouts = [];
+  lyricsContainer.innerHTML = '';
+}
+
+function showLyricLine(index) {
+  if (index >= songLyrics.length) return;
+  
+  const line = songLyrics[index];
+  const el = document.createElement('div');
+  el.textContent = line.text;
+  el.style.cssText = `
+    font-size: clamp(24px, 5vw, 48px);
+    color: #fff0f6;
+    text-shadow: 0 0 20px rgba(217, 137, 170, 0.8), 0 0 40px rgba(168, 95, 131, 0.5);
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+    filter: blur(4px);
+    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+    margin-bottom: 20px;
+    line-height: 1.4;
+    font-style: italic;
+  `;
+  
+  lyricsContainer.appendChild(el);
+  
+  requestAnimationFrame(() => {
+    el.style.opacity = '1';
+    el.style.transform = 'translateY(0) scale(1)';
+    el.style.filter = 'blur(0)';
+  });
+  
+  // Удаляем предыдущие строки, чтобы не было каши
+  const allLines = lyricsContainer.children;
+  if (allLines.length > 1) {
+    const prev = allLines[0];
+    prev.style.opacity = '0';
+    prev.style.transform = 'translateY(-20px) scale(0.95)';
+    prev.style.filter = 'blur(4px)';
+    setTimeout(() => prev.remove(), 1000);
+  }
+}
+
+function startLyrics() {
+  resetLyrics();
+  lyricsOverlay.style.display = 'flex';
+  
+  songLyrics.forEach((line, i) => {
+    const t = setTimeout(() => {
+      showLyricLine(i);
+    }, line.time * 1000);
+    lyricTimeouts.push(t);
+  });
+}
+
+function stopLyrics() {
+  resetLyrics();
+  lyricsOverlay.style.display = 'none';
+}
+
 $('#musicBtn').onclick = () => {
   if (musicPlaying) { 
     music.pause(); 
     $('#musicBtn').textContent = '🎵'; 
+    stopLyrics();
   } else { 
-    music.play().catch(e => toast('Не удалось запустить музыку. Проверь файл 1.mp3')); 
+    music.play().catch(e => toast('Не забудь закинуть 1.mp3 в папку!')); 
     $('#musicBtn').textContent = '🔇'; 
+    startLyrics();
   }
   musicPlaying = !musicPlaying;
 };
